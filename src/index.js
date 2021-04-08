@@ -4,12 +4,7 @@ import { homePage, userLogin, userRegister } from './lib/components/homePage.js'
 
 
 export const myFunction = () => {
-  //const container = document.createElement('div');
-  //container.id = 'info-container';
-  //container.innerHTML = homePage();
-  //console.log('Hola mundo!');
-  const myFragment = document.createRange().createContextualFragment(homePage());
-//let myFragment = new DOMParser().parseFromString(homePage () , 'text/html').documentElement;
+   const myFragment = document.createRange().createContextualFragment(homePage());
   console.log(myFragment);
   const loginButton = myFragment.getElementById('login-button');
   const registerButton = myFragment.getElementById('register-button');
