@@ -1,6 +1,11 @@
 const homePage = () =>{
   const container = document.createElement('div');
   container.id = 'info-container';
+  document.getElementById('welcome-page').appendChild(container);
+  container.innerHTML = buttons;
+  return container
+}
+const buttons = () =>{
   const userButtons = `<button id='login-button'>Iniciar sesion</button>
                 <button id='register-button'>Registrarse</button>`;
   container.innerHTML = userButtons;
@@ -19,12 +24,6 @@ const userLogin = () =>{
   return loginForm;              
 }
 
-const hola = () =>{
-  document.getElementById('login-button').style.display = 'none';
-  document.getElementById('register-button').style.display = 'none';
-  document.getElementById('info-container').innerHTML = userLogin();
-
-}
 console.log(document.getElementById('login-button'))
 //document.getElementById('login-button').addEventListener('click', hola());
 
