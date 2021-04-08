@@ -2,7 +2,6 @@ export const homePage = () =>{
   const main = `<button id='login-button'>Iniciar sesion</button>
                 <button id='register-button'>Registrarse</button>
                 `
-  //document.getElementById('login-button').addEventListener('click',userLogin());
   return main
 }
 
@@ -16,6 +15,5 @@ export const userLogin = () =>{
   return form;              
 }
 
-
-
+//document.getElementById('login-button').addEventListener('click',userLogin());
 

@@ -40,11 +40,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/karinmelissa/SCL016-social-network.git"
+    "url": "git+https://github.com/CarolAbcl/SCL016-social-network.git"
   },
-  "author": "Carol Allende - Karin Escobar",
+  "author": "\"Carol Allende - Karin Escobar\"",
   "bugs": {
-    "url": "https://github.com/karinmelissa/SCL016-social-network/issues"
+    "url": "https://github.com/CarolAbcl/SCL016-social-network/issues"
   },
-  "homepage": "https://github.com/karinmelissa/SCL016-social-network#readme"
+  "homepage": "https://github.com/CarolAbcl/SCL016-social-network#readme"
 }
