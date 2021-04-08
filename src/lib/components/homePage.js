@@ -1,33 +1,33 @@
-const homePage = () =>{
-  const container = document.createElement('div');
-  container.id = 'info-container';
-  document.getElementById('welcome-page').appendChild(container);
-  container.innerHTML = buttons;
-  return container
-}
-const buttons = () =>{
-  const userButtons = `<button id='login-button'>Iniciar sesion</button>
-                <button id='register-button'>Registrarse</button>`;
-  container.innerHTML = userButtons;
-  console.log(document.getElementById('login-button'))
-  return container
+export const homePage = () =>{
+  const main = `<div id= 'info-container'>
+                <button id='login-button'>Iniciar sesion</button>
+                <button id='register-button'>Registrarse</button>
+                </div>
+                `
+  return main
 }
 
-const userLogin = () =>{
-  const loginForm = document.getElementById('info-container');
-  const form = `<form>
-                  <input type="text" id="signup-email"  placeholder="Email" required>
-                  <input type="password" id="signup-password" placeholder="Password" required>
+export const userLogin = () =>{
+  const loginForm = `<form class= 'loginForm' id= 'loginForm'>
+                  <input type="text" id="signing-email"  placeholder="Email" required>
+                  <input type="password" id="signing-password" placeholder="Password" required>
                   <button type="submit">Log in</button>
-                </form>`;
-  loginForm.innerHTML = form ;
+                </form>
+                `
   return loginForm;              
 }
 
-console.log(document.getElementById('login-button'))
-//document.getElementById('login-button').addEventListener('click', hola());
+export const userRegister = () =>{
+ const registerForm = `<form class= 'registerForm' id= 'registerForm'>
+                      <input type="text" id="userName"  placeholder="Nombre de Usuario" required>
+                      <input type="text" id="signup-email"  placeholder="Correo electrónico" required>
+                      <input type="password" id="signup-password" placeholder="Contraseña" required>
+                      <input type="password" id="confirm-password" placeholder="Confirmar Contraseña" required>
+                      <button type="submit">Registrar</button>
+                      </form>
+                      `
+  return registerForm                  
+}
 
-export default homePage;
-
-
+//document.getElementById('login-button').addEventListener('click',userLogin());
 

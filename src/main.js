@@ -1,3 +1,4 @@
-import { myFunction } from './lib/index.js';
+import { myFunction } from './index.js';
 
 document.getElementById('root').appendChild(myFunction());
+
