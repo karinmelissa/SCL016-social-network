@@ -1,3 +1,5 @@
+import { feedHome } from "../components/feed.js";
+
 export const signUpUser = () =>{
   const signupForm = document.querySelector('#registerForm');
   signupForm.addEventListener('submit', (e)=>{
@@ -5,13 +7,21 @@ export const signUpUser = () =>{
   console.log(signupForm);
   const email = document.getElementById("signup-email").value;
   const password = document.getElementById("signup-password").value;
+  const passwordConfirmation = document.getElementById("confirm-password").value;
+  if(password !== passwordConfirmation){
+    document.querySelector('.error-control').textContent = 'Las contraseñas deben ser iguales'
+  }
   console.log(email,password);
   auth
     .createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      // clear the form
       signupForm.reset();
-  })
+    })
+    .catch((error)=>{
+      document.querySelector('.error-control').textContent = 'Correo electronico invalido'
+
+    })
+
   });
 }
 
@@ -19,18 +29,19 @@ export const signInUser = ()=>{
   const signInForm = document.querySelector('#loginForm');
   signInForm.addEventListener('submit', (e)=>{
     e.preventDefault();
-    console.log(signInForm);
     const email = document.getElementById("signing-email").value;
     const password = document.getElementById("signing-password").value;
-    console.log(email,password);
-    auth.signInWithEmailAndPassword(email, password).then((userCredential) => {
-      // clear the form
+    console.log(email,password)
+    auth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
       signInForm.reset();
-      // close the modal
-      alert('Hola');
-    });
+      feedHome();
+      })
+      .catch((error)=>{
+        console.log('contraseña incorrecta');
+        document.querySelector('.error-control').textContent = 'contraseña incorrecta'
 
-
+      })
   });
 
 }
