@@ -29,5 +29,3 @@ export const userRegister = () =>{
   return registerForm                  
 }
 
-//document.getElementById('login-button').addEventListener('click',userLogin());
-
