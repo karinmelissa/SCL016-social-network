@@ -35,7 +35,7 @@ export const signInUser = ()=>{
     auth.signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
       signInForm.reset();
-      feedHome();
+      document.getElementById('root').innerHTML=feedHome();
       })
       .catch((error)=>{
         console.log('contraseña incorrecta');
@@ -45,4 +45,19 @@ export const signInUser = ()=>{
   });
 
 }
+export const close = () => {
+  e.preventDefault();
+  auth.signOut
+  .then(console.log('cerrado'));
+  };
+  
+export const signInGoogle = (e) =>{
+  e.preventDefault();
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth.signInWithPopup(provider)
+  .then(document.getElementById('root').innerHTML=feedHome());
+  };
+
+
+
 
