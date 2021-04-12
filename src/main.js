@@ -1,4 +1,4 @@
-import { myFunction } from './index.js';
+import { startFunction } from './index.js';
 
-document.getElementById('root').appendChild(myFunction());
+document.getElementById('root').appendChild(startFunction());
 

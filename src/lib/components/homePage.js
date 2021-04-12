@@ -1,31 +1,48 @@
-export const homePage = () =>{
-  const main = `<div id= 'info-container'>
-                <button id='login-button'>Iniciar sesion</button>
-                <button id='register-button'>Registrarse</button>
-                </div> `
-  return main
+export const homePage = () => {
+  const main = `<div class='mainGrid'>
+                  <div class='welcomeLogo'><img src="../images/femPage.png"></div>
+                  <div class= 'info-container' id='info-container'> 
+                  <div class= 'welcomeButtons'>
+                  <h1>Una comunidad</h1>
+                  <h1>para nosotras</h1>
+                  <button class='login-button' id='login-button'>Iniciar sesion</button>
+                  <button class='register-button' id='register-button'>Registrarse</button>
+                  </div> 
+                </div>
+                  <div class='womenWelcome'><img src="../images/women.png"></div>
+                  <div class='copyright'>fempage 2021</div>
+              </div> 
+              `            
+  return main;
 }
 
-export const userLogin = () =>{
+export const userLogin = () => {
   const loginForm = `<form class= 'loginForm' id= 'loginForm'>
-                  <input type="email" id="signing-email"  placeholder="Email" required>
-                  <input type="password" id="signing-password" placeholder="Password" required>
+                  <p class='textForm'>Correo</p>   
+                  <input type="email" id="signing-email"  placeholder="Ingresa tu correo aquí" required>
+                  <p class='textForm'>Contraseña</p>
+                  <input type="password" id="signing-password" placeholder="******" required>
                   <p class='error-control'></p>
-                  <button type="submit">Log in</button>
+                  <button class='login-button' type="submit">Log in</button>
                 </form>
-                <p>Aun no te unes?<a class='login-button' id='register-button'>Registrate!</a></p> `
+                  <button class='loginWithGoogle' id='loginWithGoogle' >Google</button> 
+                <p class='infoLink'>Aun no te unes?<a class='link' id='register-button'> Registrate!</a></p> `
   return loginForm;              
 }
 
-export const userRegister = () =>{
+export const userRegister = () => {
  const registerForm = `<form class= 'registerForm' id= 'registerForm'>
+                      <p class='textForm'>Nombre de Usuario</p>
                       <input type="text" id="userName"  placeholder="Nombre de Usuario" required>
+                      <p class='textForm'>Correo electrónico</p>
                       <input type="email" id="signup-email"  placeholder="Correo electrónico" required>
-                      <input type="password" id="signup-password" placeholder="Contraseña" required>
-                      <input type="password" id="confirm-password" placeholder="Confirmar Contraseña" required>
+                      <p class='textForm'>Contraseña</p>
+                      <input type="password" id="signup-password" placeholder="******" required>
+                      <p class='textForm'>Confirmar contraseña</p>
+                      <input type="password" id="confirm-password" placeholder="******" required>
                       <p class='error-control'></p>
-                      <button type="submit">Registrar</button>
+                      <button class='register-button' type="submit">Registrar</button>
                       </form> 
-                      <p>Ya eres miembro?<a class='login-button' id='login-button'>Iniciar Sesion</a></p>`
-  return registerForm                  
+                      <p class='infoLink'>Ya eres miembro?<a class='link' id='login-button'>Iniciar Sesion</a></p>`
+  return registerForm;                  
 }
