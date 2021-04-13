@@ -51,13 +51,11 @@ export const close = () => {
   .then(console.log('cerrado'));
   };
   
-export const signInGoogle = (e) =>{
+export const signInGoogle = e =>{
   e.preventDefault();
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider)
-  .then(document.getElementById('root').innerHTML=feedHome());
-  };
-
-
-
-
+  .then(result => {
+    document.getElementById('root').innerHTML=feedHome();
+  })
+}

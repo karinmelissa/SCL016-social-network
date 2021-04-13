@@ -25,7 +25,7 @@ export const userLogin = () => {
                   <p class='error-control'></p>
                   <button class='login-button' type="submit">Log in</button>
                 </form>
-                  <button class='loginWithGoogle' id='loginWithGoogle' >Google</button> 
+                  <button class='loginWithGoogle' id='loginWithGoogle' >Ingresar con Google</button> 
                 <p class='infoLink'>Aun no te unes?<a class='link' id='register-button'> Registrate!</a></p> `
   return loginForm;              
 }
@@ -43,6 +43,6 @@ export const userRegister = () => {
                       <p class='error-control'></p>
                       <button class='register-button' type="submit">Registrar</button>
                       </form> 
-                      <p class='infoLink'>Ya eres miembro?<a class='link' id='login-button'>Iniciar Sesion</a></p>`
+                      <p class='infoLink'>Ya eres miembro?<a class='link' id='login-button'> Iniciar Sesion</a></p>`
   return registerForm;                  
 }
