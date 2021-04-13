@@ -47,6 +47,7 @@ export const signInUser = ()=>{
       })
   });
 
+<<<<<<< HEAD
 }
 export const close = (e) => {
   console.log('click')
@@ -57,6 +58,18 @@ export const close = (e) => {
 };
   
 export const signInGoogle = e =>{
+=======
+export const close = (e) => {
+  console.log('click')
+  e.preventDefault();
+  auth.signOut().then(() => {
+    console.log("signup out");
+  });
+};
+
+
+export const signInGoogle = (e) => {
+>>>>>>> e6a460bae991fc11be13e08c6dd2b3d7f4be186d
   e.preventDefault();
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider)

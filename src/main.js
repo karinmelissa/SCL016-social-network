@@ -1,8 +1,8 @@
 import { startFunction } from './index.js';
 import { feedHome } from './lib/components/feed.js';
+import { close } from './lib/functions/auth.js';
 
 firebase.auth().onAuthStateChanged((user) => {
-  console.log(user)
   if (user) {
     console.log("signin " + user.email);
     document.getElementById('root').appendChild(feedHome());
