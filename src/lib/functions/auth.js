@@ -49,17 +49,14 @@ export const signInUser = () => {
 };
  
 
-export const close = () => {
+export const close = (e) => {
   console.log('click')
   e.preventDefault();
-  auth.signOut.then(console.log('cerrado'));
+  auth.signOut().then(() => {
+    console.log("signup out");
+  });
 };
 
-/* const logoutFragment = document.createRange().createContextualFragment(feedHome());
-const logoutButton = logoutFragment.getElementById('logout-button');
-console.log(logoutButton);
-
-logoutButton.addEventListener('click', close); */
 
 export const signInGoogle = (e) => {
   e.preventDefault();
