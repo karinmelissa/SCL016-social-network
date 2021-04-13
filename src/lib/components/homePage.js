@@ -11,12 +11,9 @@ export const homePage = () => {
                   <object id="svg-object" data="starsSVGMobile.svg" type="image/svg+xml"></object>
                   <div class='womenWelcome'><img src="images/women.png"></div>
                   <div class='copyright'>fempage 2021</div>
-              </div> 
-              `            
+                </div>`;
   return main;
-}
-
-
+};
 export const userLogin = () => {
   const loginForm = `<form class= 'loginForm' id= 'loginForm'>
                   <p class='textForm'>Correo</p>   
@@ -27,12 +24,12 @@ export const userLogin = () => {
                   <button class='login' type="submit">Log in</button>
                 </form>
                 <button class='loginWithGoogle' id='loginWithGoogle'><img class='logoGoogle'src="images/LogoGoogle.png"></button> 
-                <p class='infoLink'>Aun no te unes?<a class='link' id='register-button'> Registrate!</a></p> `
-  return loginForm;              
-}
+                <p class='infoLink'>Aun no te unes?<a class='link' id='register-button'> Registrate!</a></p> `;
+  return loginForm;
+};
 
 export const userRegister = () => {
- const registerForm = `<form class= 'registerForm' id= 'registerForm'>
+  const registerForm = `<form class= 'registerForm' id= 'registerForm'>
                       <p class='textForm'>Nombre de Usuario</p>
                       <input type="text" id="userName"  placeholder="Nombre de Usuario" required>
                       <p class='textForm'>Correo electrónico</p>
@@ -44,6 +41,6 @@ export const userRegister = () => {
                       <p class='error-control'></p>
                       <button class='register' type="submit">Registrar</button>
                       </form> 
-                      <p class='infoLink'>Ya eres miembro?<a class='link' id='login-button'>Iniciar Sesion</a></p>`
-  return registerForm;                  
-}
+                      <p class='infoLink'>Ya eres miembro?<a class='link' id='login-button'>Iniciar Sesion</a></p>`;
+  return registerForm;
+};
