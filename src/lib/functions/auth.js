@@ -1,5 +1,7 @@
 import { feedHome } from "../components/feed.js";
 
+const auth = firebase.auth();
+
 export const signUpUser = () =>{
   const signupForm = document.querySelector('#registerForm');
   signupForm.addEventListener('submit', (e)=>{
@@ -46,11 +48,13 @@ export const signInUser = ()=>{
   });
 
 }
-export const close = () => {
+export const close = (e) => {
+  console.log('click')
   e.preventDefault();
-  auth.signOut
-  .then(console.log('cerrado'));
-  };
+  auth.signOut().then(() => {
+    console.log("signup out");
+  });
+};
   
 export const signInGoogle = e =>{
   e.preventDefault();
