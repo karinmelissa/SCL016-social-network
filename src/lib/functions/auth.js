@@ -24,7 +24,7 @@ export const signUpUser = () =>{
 
   });
 }
-
+// ingreso de usuarios
 export const signInUser = ()=>{
   const signInForm = document.querySelector('#loginForm');
   signInForm.addEventListener('submit', (e)=>{
@@ -34,6 +34,7 @@ export const signInUser = ()=>{
     console.log(email,password)
     auth.signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
+      console.log(userCredential);
       signInForm.reset();
       document.getElementById('root').innerHTML=feedHome();
       })
@@ -56,6 +57,7 @@ export const signInGoogle = e =>{
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider)
   .then(result => {
+    console.log('este es result' + result);
     document.getElementById('root').innerHTML=feedHome();
   })
 }
