@@ -1,4 +1,8 @@
-import { homePage, userLogin, userRegister } from './lib/components/homePage.js';
+import {
+  homePage,
+  userLogin,
+  userRegister,
+} from './lib/components/homePage.js';
 import { signInUser, signUpUser, signInGoogle } from './lib/functions/auth.js';
 
 const login = () => {
@@ -7,7 +11,7 @@ const login = () => {
   const registerButton = document.getElementById('register-button');
   registerButton.addEventListener('click', register);
   const googlebutton = document.getElementById('loginWithGoogle');
-  googlebutton.addEventListener('click', signInGoogle)
+  googlebutton.addEventListener('click', signInGoogle);
 };
 
 const register = () => {
@@ -18,7 +22,9 @@ const register = () => {
 };
 
 export const startFunction = () => {
-  const homeFragment = document.createRange().createContextualFragment(homePage());
+  const homeFragment = document
+    .createRange()
+    .createContextualFragment(homePage());
   const loginButton = homeFragment.getElementById('login-button');
   const registerButton = homeFragment.getElementById('register-button');
   const rootCall = document.getElementById('root');

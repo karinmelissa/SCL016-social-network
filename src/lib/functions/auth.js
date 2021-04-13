@@ -24,7 +24,7 @@ export const signUpUser = () =>{
 
   });
 }
-
+// ingreso de usuarios
 export const signInUser = ()=>{
   const signInForm = document.querySelector('#loginForm');
   signInForm.addEventListener('submit', (e)=>{
