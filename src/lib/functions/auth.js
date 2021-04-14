@@ -21,6 +21,7 @@ export const signUpUser = () => {
       .then((userCredential) => {
         console.log(userCredential);
         signupForm.reset();
+        window.location.href = '#/home';
       })
       .catch(() => {
         document.querySelector('.error-control').textContent = 'Correo electronico invalido';
@@ -39,12 +40,11 @@ export const signInUser = () => {
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         console.log(userCredential);
-        signInForm.reset();
-        document.getElementById('root').innerHTML = feedHome();
+        window.location.href = '#/home';
       })
       .catch(() => {
         console.log('contraseña incorrecta');
-        document.querySelector('.error-control').innerHTML = `contraseña incorrecta, <a class='link' id='register-button'> olvidaste tu contraseña?</a>`;
+        document.querySelector('.error-control').innerHTML = 'Contraseña incorrecta, <a class="link" id="register-button"> olvidaste tu contraseña?</a>';
       });
   });
 };
@@ -53,7 +53,7 @@ export const signInUser = () => {
 export const close = (e) => {
   e.preventDefault();
   auth.signOut().then(() => {
-    document.getElementById('root').innerHTML = ' ';
+    window.location.href = './';
   });
 };
 
@@ -63,6 +63,6 @@ export const signInGoogle = (e) => {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider).then((result) => {
     console.log(result);
-    document.getElementById('root').innerHTML = feedHome();
+    window.location.href = '#/home';
   });
 };
