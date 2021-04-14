@@ -2,6 +2,7 @@ import { feedHome } from '../components/feed.js';
 
 const auth = firebase.auth();
 
+// Register
 export const signUpUser = () => {
   const signupForm = document.querySelector('#registerForm');
   signupForm.addEventListener('submit', (e) => {
@@ -26,7 +27,7 @@ export const signUpUser = () => {
       });
   });
 };
-
+// login
 export const signInUser = () => {
   const signInForm = document.querySelector('#loginForm');
   signInForm.addEventListener('submit', (e) => {
@@ -37,28 +38,27 @@ export const signInUser = () => {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        console.log('userCredential ' + userCredential);
+        console.log(userCredential);
         signInForm.reset();
         document.getElementById('root').innerHTML = feedHome();
       })
       .catch(() => {
         console.log('contraseña incorrecta');
-        document.querySelector('.error-control').textContent = 'contraseña incorrecta';
+        document.querySelector('.error-control').innerHTML = `contraseña incorrecta, <a class='link' id='register-button'> olvidaste tu contraseña?</a>`;
       });
   });
 };
- 
 
+// logout session from feed
 export const close = (e) => {
-  console.log('click')
   e.preventDefault();
   auth.signOut().then(() => {
-    console.log("signup out");
+    document.getElementById('root').innerHTML = ' ';
   });
   document.getElementById('root').innerHTML=" ";
 };
 
-
+// login with google
 export const signInGoogle = (e) => {
   e.preventDefault();
   const provider = new firebase.auth.GoogleAuthProvider();
