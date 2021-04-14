@@ -55,6 +55,7 @@ export const close = (e) => {
   auth.signOut().then(() => {
     console.log("signup out");
   });
+  document.getElementById('root').innerHTML=" ";
 };
 
 
