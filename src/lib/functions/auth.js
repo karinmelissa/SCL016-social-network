@@ -44,7 +44,7 @@ export const signInUser = () => {
       })
       .catch(() => {
         console.log('contraseña incorrecta');
-        document.querySelector('.error-control').innerHTML = `contraseña incorrecta, <a class='link' id='register-button'> olvidaste tu contraseña?</a>`;
+        document.querySelector('.error-control').innerHTML = 'contraseña incorrecta, <a class="link" id="register-button"> olvidaste tu contraseña?</a>';
       });
   });
 };

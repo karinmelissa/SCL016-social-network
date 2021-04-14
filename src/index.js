@@ -22,6 +22,10 @@ const register = () => {
 };
 
 export const startFunction = () => {
+  const inicio = () => {
+    console.log('pagina de inicio');
+  }
+  window.onload = inicio();
   const homeFragment = document
     .createRange()
     .createContextualFragment(homePage());

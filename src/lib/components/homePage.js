@@ -1,5 +1,5 @@
 export const homePage = () => {
-  const main = `<div class='mainGrid'>
+  const main = `  <div class='mainGrid'>
                   <div class='welcomeLogo'><img src="images/femPage.png"></div>
                   <div class= 'info-container' id='info-container'> 
                   <div class= 'welcomeButtons'>
