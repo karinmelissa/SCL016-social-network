@@ -1,80 +1,68 @@
-import { feedHome } from "../components/feed.js";
+import { feedHome } from '../components/feed.js';
 
 const auth = firebase.auth();
 
-export const signUpUser = () =>{
+// Register
+export const signUpUser = () => {
   const signupForm = document.querySelector('#registerForm');
-  signupForm.addEventListener('submit', (e)=>{
-  e.preventDefault();
-  console.log(signupForm);
-  const email = document.getElementById("signup-email").value;
-  const password = document.getElementById("signup-password").value;
-  const passwordConfirmation = document.getElementById("confirm-password").value;
-  if(password !== passwordConfirmation){
-    document.querySelector('.error-control').textContent = 'Las contraseñas deben ser iguales'
-  }
-  console.log(email,password);
-  auth
-    .createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      signupForm.reset();
-    })
-    .catch((error)=>{
-      document.querySelector('.error-control').textContent = 'Correo electronico invalido'
-
-    })
-
-  });
-}
-// ingreso de usuarios
-export const signInUser = ()=>{
-  const signInForm = document.querySelector('#loginForm');
-  signInForm.addEventListener('submit', (e)=>{
+  signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = document.getElementById("signing-email").value;
-    const password = document.getElementById("signing-password").value;
-    console.log(email,password)
-    auth.signInWithEmailAndPassword(email, password)
+    console.log(signupForm);
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
+    const passwordConfirmation = document.getElementById('confirm-password')
+      .value;
+    if (password !== passwordConfirmation) {
+      document.querySelector('.error-control').textContent = 'Las contraseñas deben ser iguales';
+    }
+    console.log(email, password);
+    auth
+      .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
-      console.log(userCredential);
-      signInForm.reset();
-      document.getElementById('root').innerHTML=feedHome();
+        console.log(userCredential);
+        signupForm.reset();
       })
-      .catch((error)=>{
+      .catch(() => {
+        document.querySelector('.error-control').textContent = 'Correo electronico invalido';
+      });
+  });
+};
+// login
+export const signInUser = () => {
+  const signInForm = document.querySelector('#loginForm');
+  signInForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('signing-email').value;
+    const password = document.getElementById('signing-password').value;
+    console.log(email, password);
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+        signInForm.reset();
+        document.getElementById('root').innerHTML = feedHome();
+      })
+      .catch(() => {
         console.log('contraseña incorrecta');
-        document.querySelector('.error-control').textContent = 'contraseña incorrecta'
-
-      })
-  });
-
-<<<<<<< HEAD
-}
-export const close = (e) => {
-  console.log('click')
-  e.preventDefault();
-  auth.signOut().then(() => {
-    console.log("signup out");
-  });
-};
-  
-export const signInGoogle = e =>{
-=======
-export const close = (e) => {
-  console.log('click')
-  e.preventDefault();
-  auth.signOut().then(() => {
-    console.log("signup out");
+        document.querySelector('.error-control').innerHTML = `contraseña incorrecta, <a class='link' id='register-button'> olvidaste tu contraseña?</a>`;
+      });
   });
 };
 
+// logout session from feed
+export const close = (e) => {
+  e.preventDefault();
+  auth.signOut().then(() => {
+    document.getElementById('root').innerHTML = ' ';
+  });
+};
 
+// login with google
 export const signInGoogle = (e) => {
->>>>>>> e6a460bae991fc11be13e08c6dd2b3d7f4be186d
   e.preventDefault();
   const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider)
-  .then(result => {
-    console.log('este es result' + result);
-    document.getElementById('root').innerHTML=feedHome();
-  })
-}
+  auth.signInWithPopup(provider).then((result) => {
+    console.log(result);
+    document.getElementById('root').innerHTML = feedHome();
+  });
+};

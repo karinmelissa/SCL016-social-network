@@ -181,15 +181,15 @@ h1{
   text-align: center;
   margin: -5px;
 }
-#svg-object{
+/*#svg-object{
   width: 100vw;
   height: auto;
   position: relative;
     top: -650px;
-    /* margin: 0px; */
+    /* margin: 0px; 
     margin: auto;
     z-index: 1;
-}
+}*/
 
 
 

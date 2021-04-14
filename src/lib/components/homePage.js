@@ -8,7 +8,6 @@ export const homePage = () => {
                   <button class='register-button' id='register-button'>Registrarse</button>
                   </div> 
                 </div>
-                  <object id="svg-object" data="starsSVGMobile.svg" type="image/svg+xml"></object>
                   <div class='womenWelcome'><img src="images/women.png"></div>
                   <div class='copyright'>fempage 2021</div>
                 </div>`;
