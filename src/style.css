@@ -109,6 +109,17 @@ h1{
   color: #343A5A;
 }
 
+.loginWithGoogle{
+  width: 232px;
+  height: 46px;
+  background-color: #FFFFFF;
+  border: 3px solid #F4C0C2; 
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  margin-top: 24px;
+}
+
 h1{
   font-family: 'Poppins', sans-serif;
   text-align: center;
@@ -170,15 +181,15 @@ h1{
   text-align: center;
   margin: -5px;
 }
-#svg-object{
+/*#svg-object{
   width: 100vw;
   height: auto;
   position: relative;
     top: -650px;
-    /* margin: 0px; */
+    /* margin: 0px; 
     margin: auto;
     z-index: 1;
-}
+}*/
 
 
 
