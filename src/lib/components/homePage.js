@@ -28,7 +28,7 @@ export const userLogin = () => {
                 <button class='loginWithGoogle' id='loginWithGoogle'><img class='logoGoogle'src="images/LogoGoogle.png"></button> 
                 <p class='infoLink'>Aun no te unes?<a href='#/register' class='link' id='register-button'> Registrate!</a></p>
                 <div class='womenWelcome'><img src="images/women.png"></div>
-                  <div class='copyright'>fempage 2021</div>
+                <div class='copyright'>fempage 2021</div>
                 </div> `;             
   return loginForm;
 };

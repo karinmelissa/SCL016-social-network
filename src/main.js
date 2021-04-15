@@ -1,11 +1,9 @@
-import { initRouter } from './route.js'
-/*import { startFunction } from './index.js';
+import { initRouter } from './route.js';
+/* import { startFunction } from './index.js';
 import { feedHome } from './lib/components/feed.js';
-import { close } from './lib/functions/auth.js';*/
-
-
+import { close } from './lib/functions/auth.js'; */
 //  initRouter();
-/*firebase.auth().onAuthStateChanged((user) => {
+/* firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     document.getElementById('root').appendChild(feedHome());
     const logoutButton = document.getElementById('logout-button');
@@ -13,18 +11,13 @@ import { close } from './lib/functions/auth.js';*/
   } else {
     document.getElementById('root').appendChild(startFunction());
   }
-});*/
+}); */
 const init = () => {
-
-  //initFirebase();
-
-  //observer();
-  //templateCSS();
-  //templateHome();
+  // initFirebase();
+  // observer();
+  // templateCSS();
+  // templateHome();
   initRouter();
- // templateSignUp();
-  
-
-}
-
-window.addEventListener('load',init);
+  // templateSignUp();
+};
+window.addEventListener('load', init);

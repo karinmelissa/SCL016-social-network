@@ -1,4 +1,4 @@
-import {
+/* import {
   homePage,
   userLogin,
   userRegister,
@@ -32,4 +32,4 @@ export const startFunction = () => {
   loginButton.addEventListener('click', login);
   registerButton.addEventListener('click', register);
   return homeFragment;
-};
+}; */
