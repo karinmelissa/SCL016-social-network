@@ -1,4 +1,5 @@
 import { initRouter } from './route.js';
+<<<<<<< HEAD
 /* import { startFunction } from './index.js';
 import { feedHome } from './lib/components/feed.js';
 import { close } from './lib/functions/auth.js'; */
@@ -20,4 +21,11 @@ const init = () => {
   initRouter();
   // templateSignUp();
 };
+=======
+
+const init = () => {
+  initRouter();
+};
+
+>>>>>>> 7f39b30e9e31427fd6e284ca54d47515870d39c2
 window.addEventListener('load', init);
