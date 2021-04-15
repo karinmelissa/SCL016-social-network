@@ -1,5 +1,3 @@
-import { feedHome } from '../components/feed.js';
-
 const auth = firebase.auth();
 
 // Register

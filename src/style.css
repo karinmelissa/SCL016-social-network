@@ -17,7 +17,7 @@ h1{
     'left left'
     'footer footer';
   grid-template-columns: 1fr 1fr;   
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto;
   background-color: #343A5A;
   background-image: url('images/background.png');
   background-repeat: no-repeat; /* Do not repeat the image */
@@ -46,7 +46,7 @@ h1{
   grid-area: left;
   display: flex;
   height: 400px;
-  z-index: 2;
+  /* z-index: 2;*/
 }
 
 .womenWelcome img{
@@ -158,6 +158,7 @@ h1{
 
 .link{
  text-decoration: underline;
+ color: #F4C0C2;
 }
 
 .infoLink{
@@ -166,6 +167,7 @@ h1{
   text-align: center;
   margin-top: 10px;
 }
+
 .loginWithGoogle{
   padding: 5px 10px;
   text-align: center;
@@ -190,7 +192,16 @@ h1{
     margin: auto;
     z-index: 1;
 }*/
+/* Feed Page */ 
+.topMenu{
+  grid-template-areas: topMenu;
+  display: grid;
+  background-color: #F4C0C2;
+}
 
+.topMenu img{
+  width: 50px;
+}
 
 
 /*desktop view*/
