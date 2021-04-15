@@ -192,7 +192,16 @@ h1{
     margin: auto;
     z-index: 1;
 }*/
+/* Feed Page */ 
+.topMenu{
+  grid-template-areas: topMenu;
+  display: grid;
+  background-color: #F4C0C2;
+}
 
+.topMenu img{
+  width: 50px;
+}
 
 
 /*desktop view*/

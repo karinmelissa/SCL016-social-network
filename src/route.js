@@ -4,6 +4,7 @@ import {
   userRegister,
   homePage,
 } from './lib/components/homePage.js';
+import { topMenu } from './lib/components/topMenu.js';
 import {
   signInUser,
   signUpUser,
@@ -48,8 +49,9 @@ export const showTemplate = (hash) => {
       break;
     case '#/home':
       rootContainer.appendChild(feedHome());
+      const feedContainer = document.querySelector('.menuContainer');
+      feedContainer.appendChild(topMenu()); 
       const logoutButton = document.getElementById('logout-button');
-      console.log(logoutButton);
       logoutButton.addEventListener('click', close);
       break;
   }
