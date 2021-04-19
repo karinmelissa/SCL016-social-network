@@ -4,21 +4,6 @@ import {
   userRegister,
   homePage,
 } from './lib/components/homePage.js';
-<<<<<<< HEAD
-import { signInUser, signUpUser, close } from './lib/functions/auth.js';
-
-const changeRouter = (hash) => {
-  if (hash === '') {
-    return showTemplate(hash);
-  } else if (hash === '#/login') {
-    return showTemplate(hash);
-  } else if (hash === '#/register') {
-    return showTemplate(hash);
-  } else if (hash === '#/home') {
-    return showTemplate(hash);
-  }
-};
-=======
 import { topMenu } from './lib/components/topMenu.js';
 import {
   signInUser,
@@ -43,7 +28,6 @@ export const userVerification = () => {
 };
 
 const rootContainer = document.getElementById('root');
->>>>>>> 7f39b30e9e31427fd6e284ca54d47515870d39c2
 
 export const showTemplate = (hash) => {
   console.log('entra a templates');
@@ -56,11 +40,8 @@ export const showTemplate = (hash) => {
     case '#/login':
       rootContainer.innerHTML = userLogin();
       signInUser();
-<<<<<<< HEAD
-=======
       const googlebutton = document.getElementById('loginWithGoogle');
       googlebutton.addEventListener('click', signInGoogle);
->>>>>>> 7f39b30e9e31427fd6e284ca54d47515870d39c2
       break;
     case '#/register':
       rootContainer.innerHTML = userRegister();
@@ -75,8 +56,6 @@ export const showTemplate = (hash) => {
       break;
   }
 };
-<<<<<<< HEAD
-=======
 
 const changeRouter = (hash) => {
   console.log('entra a changeRouter');
@@ -91,7 +70,6 @@ const changeRouter = (hash) => {
     return showTemplate(hash);
   }
 };
->>>>>>> 7f39b30e9e31427fd6e284ca54d47515870d39c2
 
 export const initRouter = () => {
   window.addEventListener('load', changeRouter(window.location.hash));
