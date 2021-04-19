@@ -4,6 +4,7 @@ import {
   userRegister,
   homePage,
 } from './lib/components/homePage.js';
+import { newpost } from './lib/components/posting.js';
 import { topMenu } from './lib/components/topMenu.js';
 import {
   signInUser,
@@ -34,23 +35,27 @@ export const showTemplate = (hash) => {
   rootContainer.innerHTML = '';
 
   switch (hash) {
-    case '':
+    case "":
       rootContainer.innerHTML = homePage();
       break;
-    case '#/login':
+    case "#/login":
       rootContainer.innerHTML = userLogin();
       signInUser();
-      const googlebutton = document.getElementById('loginWithGoogle');
-      googlebutton.addEventListener('click', signInGoogle);
+      const googlebutton = document.getElementById("loginWithGoogle");
+      googlebutton.addEventListener("click", signInGoogle);
       break;
-    case '#/register':
+    case "#/register":
       rootContainer.innerHTML = userRegister();
       signUpUser();
       break;
-    case '#/home':
+    case "#/home":
       rootContainer.appendChild(feedHome());
-      const feedContainer = document.querySelector('.menuContainer');
-      feedContainer.appendChild(topMenu()); 
+      const feedContainer = document.querySelector('.topcontainer');
+      feedContainer.appendChild(topMenu());
+      const openMenu = document.querySelector('#openMenu');
+      openMenu.addEventListener('click', openMenuFunction);
+      const printNewPost = document.getElementById('newPosts');
+      printNewPost.appendChild(newpost());                
       const logoutButton = document.getElementById('logout-button');
       logoutButton.addEventListener('click', close);
       break;
@@ -81,3 +86,17 @@ export const initRouter = () => {
     };
   }
 };
+
+// open menu from topMenu feedpage
+let showMenu = true;
+const openMenuFunction = (e) => {
+  if (showMenu === true){
+    document.getElementById('menu').style.display='block';
+    showMenu = false;
+  }
+  else {
+    document.getElementById('menu').style.display='none';
+    showMenu = true;
+  } 
+  };
+

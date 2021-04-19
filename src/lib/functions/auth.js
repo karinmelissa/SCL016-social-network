@@ -64,3 +64,4 @@ export const signInGoogle = (e) => {
     window.location.href = '#/home';
   });
 };
+
