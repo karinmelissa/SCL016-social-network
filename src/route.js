@@ -4,6 +4,7 @@ import {
   userRegister,
   homePage,
 } from './lib/components/homePage.js';
+import { newpost } from './lib/components/posting.js';
 import { topMenu } from './lib/components/topMenu.js';
 import {
   signInUser,
@@ -53,6 +54,8 @@ export const showTemplate = (hash) => {
       feedContainer.appendChild(topMenu());
       const openMenu = document.querySelector('#openMenu');
       openMenu.addEventListener('click', openMenuFunction);
+      const printNewPost = document.getElementById('newPosts');
+      printNewPost.appendChild(newpost());                
       const logoutButton = document.getElementById('logout-button');
       logoutButton.addEventListener('click', close);
       break;

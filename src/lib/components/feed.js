@@ -1,10 +1,11 @@
+import {newpost} from '../components/posting.js';
 export const feedHome = () => {
   const feedTemplate = document.createElement('div');
   feedTemplate.className = 'feedGrid';
   const welcome = ` <div class ='topcontainer'></div>
                     <div class= "leftBar">izquierda</div>
                     <div class="feed">
-                      <div class="newPosts"></div>
+                      <div id="newPosts"></div>
                       <div class="commandBar">
                         <p id="commandText"> Publicaciones</p>
                         <select name="typePost">
