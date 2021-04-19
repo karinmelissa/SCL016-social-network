@@ -1,11 +1,10 @@
-const auth = firebase.auth();
+export const auth = firebase.auth();
 
 // Register
 export const signUpUser = () => {
   const signupForm = document.querySelector('#registerForm');
   signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(signupForm);
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;
     const passwordConfirmation = document.getElementById('confirm-password')
@@ -13,14 +12,14 @@ export const signUpUser = () => {
     if (password !== passwordConfirmation) {
       document.querySelector('.error-control').textContent = 'Las contraseñas deben ser iguales';
     }
-    console.log(email, password);
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        console.log(userCredential);
-        signupForm.reset();
-        window.location.href = '#/home';
-      })
+        return userCredential.user.updateProfile({
+        displayName: document.getElementById("userName").value
+        //window.location.href = '#/home'
+        })
+      })  
       .catch(() => {
         document.querySelector('.error-control').textContent = 'Correo electronico invalido';
       });

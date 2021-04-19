@@ -14,7 +14,7 @@ export const feedHome = () => {
                         <option value="privadas" label="Privadas"></option>
                         </select> 
                        </div> 
-                      <div class="posts"></div>
+                      <div class="posts" id="posts"></div>
                     </div>
                     <div class= "rightBar">derecha</div>
                     <div class= "copyright">fempage 2021</div>
@@ -22,3 +22,6 @@ export const feedHome = () => {
   feedTemplate.innerHTML = welcome;
   return feedTemplate;
 };
+/* export const post =() =>{
+
+ } */

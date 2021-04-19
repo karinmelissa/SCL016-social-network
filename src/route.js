@@ -12,6 +12,7 @@ import {
   signInGoogle,
   close,
 } from './lib/functions/auth.js';
+import { savePost, showPosts } from './lib/functions/posts.js'
 
 let userFound;
 // verifica si el usuario esta registrado
@@ -54,10 +55,14 @@ export const showTemplate = (hash) => {
       feedContainer.appendChild(topMenu());
       const openMenu = document.querySelector('#openMenu');
       openMenu.addEventListener('click', openMenuFunction);
-      const printNewPost = document.getElementById('newPosts');
-      printNewPost.appendChild(newpost());                
+      const newPost = document.getElementById('newPosts');
+      newPost.appendChild(newpost());
+      const printPosts = document.getElementById('posts');
+      printPosts.appendChild(showPosts());                
       const logoutButton = document.getElementById('logout-button');
       logoutButton.addEventListener('click', close);
+      const createPost = document.querySelector('.postingButton');
+      createPost.addEventListener('click', savePost);
       break;
   }
 };
