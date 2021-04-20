@@ -11,7 +11,7 @@ export const topMenu = () => {
                     <i class="fas fa-bars"></i>
                     <i class="fas fa-times"></i>
                     <div id='menu' class="menu">
-                    <button>Mi perfil</button>
+                    <a href="#/profile"><button>Mi perfil</button></a>
                     <button>Mis salas <span id="countRooms">(0)</span></button>
                     <button id='logout-button'>Cerrar sesión</button>
                     </div>
