@@ -393,25 +393,57 @@ h1 {
   border-radius: 30px;
   border-style: hidden;
   color: white;
-  margin-left: 75%;
   outline: none;
+  margin-left: 5%;
 }
 
 .postingButton:active {
   background: #7eb3dd;
 }
 
-.commandBar select {
+.commandBar select,
+#selectPrivacy{
   color: #797ad4;
   border-color: #797ad4;
+  margin-left: 45%;
+}
+.posts{
+  width: 90%;
 }
 
-.posts {
-  width: 90%;
-  height: 100px;
+.post {
+  width: 100%;
   background-color: #ffffff;
   border: 3px solid #797ad4;
+  padding: 5px;
+  box-sizing: border-box;
+  margin: 5px auto;
+  display: grid;
+  grid-template-areas:
+      "userPhoto userPhoto"
+      "userName userName"
+      "mainArea mainArea";
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: 1fr 1fr;
 }
+.postUserphoto{
+  background-color: #c17f89;
+  height: 27px;
+  width: 27px;
+  border-radius: 50px;
+  margin: 5px auto;
+
+}
+
+.postedUsername{
+  font-size: 20px;
+  font-weight: 500;
+  color: #343A5A;
+}
+.postedText{
+  grid-column: 1/4;
+}
+
 /*desktop view*/
 @media only screen and (min-width: 769px) {
   .mainGrid {
@@ -465,13 +497,13 @@ h1 {
   .leftBar {
     grid-template-areas: leftBar;
     display: flex;
-    border: solid 1px;
+    border: solid 1px #c17f89;
   }
 
   .rightBar {
     grid-template-areas: rightBar;
     display: flex;
-    border: solid 1px;
+    border: solid 1px #c17f89;
   }
 
   .feed {
