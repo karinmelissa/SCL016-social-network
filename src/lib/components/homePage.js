@@ -49,6 +49,7 @@ export const userRegister = () => {
                       <p class='error-control'></p>
                       <button class='register' type="submit">Registrar</button>
                       </form> 
+                      <button class='loginWithGoogle' id='loginWithGoogle'><img class='logoGoogle'src="images/LogoGoogle.png"></button>
                       <p class='infoLink'>Ya eres miembro? <a href='#/login' class='link' id='login-button'>Iniciar Sesion</a></p>
                       <div class='womenWelcome'><img src="images/women.png"></div>
                      <div class='copyright'>fempage 2021</div>

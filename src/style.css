@@ -328,6 +328,10 @@ h1 {
 .rightBar {
   display: none;
 }
+.postsView{
+  width: 90%;
+  margin: auto;
+}
 
 .feed {
   grid-template-areas: feed;
@@ -456,6 +460,9 @@ h1 {
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: 95% 90%;
     background-position-x: right;
+  }
+  .postsView{
+    grid-column: 2/3;
   }
 
   .welcomeLogo {

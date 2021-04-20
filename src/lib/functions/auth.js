@@ -32,15 +32,12 @@ export const signInUser = () => {
     e.preventDefault();
     const email = document.getElementById('signing-email').value;
     const password = document.getElementById('signing-password').value;
-    console.log(email, password);
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        console.log(userCredential);
         window.location.href = '#/home';
       })
       .catch(() => {
-        console.log('contraseña incorrecta');
         document.querySelector('.error-control').innerHTML = 'Contraseña incorrecta, <a class="link" id="register-button"> olvidaste tu contraseña?</a>';
       });
   });
@@ -50,7 +47,7 @@ export const signInUser = () => {
 export const close = (e) => {
   e.preventDefault();
   auth.signOut().then(() => {
-    window.location.href = './';
+    window.location.hash = '';
   });
 };
 

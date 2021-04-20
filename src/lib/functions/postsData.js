@@ -21,6 +21,15 @@ export const savePost = () => {
 
 export const showPosts = () => {
   let posts = document.createElement('div');
+  posts.className = 'postsView'
+  posts.innerHTML = `<div class="commandBar">
+                      <p id="commandText"> Publicaciones</p>
+                      <select name="typePost">
+                      <option value="Todas" label="Todas"></option>
+                      <option value="publicas" label="Publicas"></option>
+                      <option value="privadas" label="Privadas"></option>
+                      </select> 
+                    </div> `;
   let dataPosts = firebase
     .firestore()
     .collection('posts')
