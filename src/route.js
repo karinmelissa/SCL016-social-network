@@ -49,6 +49,7 @@ export const showTemplate = (hash) => {
       signUpUser();
       break;
     case "#/home":
+      if (userFound){
       rootContainer.appendChild(feedHome());
       const feedContainer = document.querySelector('.topcontainer');
       feedContainer.appendChild(topMenu());
@@ -58,6 +59,10 @@ export const showTemplate = (hash) => {
       printNewPost.appendChild(newpost());                
       const logoutButton = document.getElementById('logout-button');
       logoutButton.addEventListener('click', close);
+    }
+      else { 
+        window.location.hash = '';
+      }
       break;
   }
 };
