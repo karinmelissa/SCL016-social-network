@@ -1,5 +1,5 @@
 // importamos la funcion que vamos a testear
-import {homePage} from '../src/lib/components/homePage.js';
+/* import {homePage} from '../src/lib/components/homePage.js';
 
 const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
 let dom
@@ -14,13 +14,15 @@ describe('index.html', () => {
     container = dom.window.document.body
   });
 });
-/* describe('testing route functions', () => {
+ describe('testing route functions', () => {
   it('should return type bolean', () => {
     expect(typeof userFound).toBe('bolean');
   });
-}); */
+});
 container.getElementById('root').innerHTML = homePage();
 it('renders a button element', () => {
   expect(container.querySelector('button')).not.toBeNull()
   expect(getByText(container, 'Iniciar Sesión')).toBeInTheDocument()
 });
+
+*/

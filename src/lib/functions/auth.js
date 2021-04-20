@@ -15,11 +15,11 @@ export const signUpUser = () => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        return userCredential.user.updateProfile({
-        displayName: document.getElementById("userName").value
-        //window.location.href = '#/home'
-        })
-      })  
+        userCredential.user.updateProfile({
+          displayName: document.getElementById('userName').value,
+          // window.location.href = '#/home'
+        });
+      })
       .catch(() => {
         document.querySelector('.error-control').textContent = 'Correo electronico invalido';
       });
@@ -63,4 +63,3 @@ export const signInGoogle = (e) => {
     window.location.href = '#/home';
   });
 };
-

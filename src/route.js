@@ -12,17 +12,14 @@ import {
   signInGoogle,
   close,
 } from './lib/functions/auth.js';
-import { savePost, showPosts } from './lib/functions/posts.js'
+import { savePost, showPosts } from './lib/functions/posts.js';
 
 let userFound;
 // verifica si el usuario esta registrado
 export const userVerification = () => {
-  console.log('ingresa a verificar');
   firebase.auth().onAuthStateChanged((user) => {
     user ? (userFound = true) : (userFound = false);
-    console.log(userFound);
     if (userFound === true) {
-      console.log('esta logeado');
       window.location.hash = '#/home';
     }
   });
@@ -32,24 +29,22 @@ export const userVerification = () => {
 const rootContainer = document.getElementById('root');
 
 export const showTemplate = (hash) => {
-  console.log('entra a templates');
   rootContainer.innerHTML = '';
-
   switch (hash) {
-    case "":
+    case '':
       rootContainer.innerHTML = homePage();
       break;
-    case "#/login":
+    case '#/login':
       rootContainer.innerHTML = userLogin();
       signInUser();
-      const googlebutton = document.getElementById("loginWithGoogle");
-      googlebutton.addEventListener("click", signInGoogle);
+      const googlebutton = document.getElementById('loginWithGoogle');
+      googlebutton.addEventListener('click', signInGoogle);
       break;
-    case "#/register":
+    case '#/register':
       rootContainer.innerHTML = userRegister();
       signUpUser();
       break;
-    case "#/home":
+    case '#/home':
       rootContainer.appendChild(feedHome());
       const feedContainer = document.querySelector('.topcontainer');
       feedContainer.appendChild(topMenu());
@@ -68,7 +63,6 @@ export const showTemplate = (hash) => {
 };
 
 const changeRouter = (hash) => {
-  console.log('entra a changeRouter');
   userVerification();
   if (hash === '') {
     return showTemplate(hash);
@@ -83,7 +77,6 @@ const changeRouter = (hash) => {
 
 export const initRouter = () => {
   window.addEventListener('load', changeRouter(window.location.hash));
-  console.log(window.location.hash);
   // reconoce un cambio en el hash y le pasa ese nuevo hash a changeRouter
   if ('onhashchange' in window) {
     window.onhashchange = () => {

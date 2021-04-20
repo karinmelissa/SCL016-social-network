@@ -1,4 +1,3 @@
-import {newpost} from '../components/posting.js';
 export const feedHome = () => {
   const feedTemplate = document.createElement('div');
   feedTemplate.className = 'feedGrid';
