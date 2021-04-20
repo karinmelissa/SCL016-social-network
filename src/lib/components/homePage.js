@@ -29,8 +29,7 @@ export const userLogin = () => {
                 <p class='infoLink'>Aun no te unes? <a href='#/register' class='link' id='register-button'>Registrate!</a></p>
                 </div>
                 <div class='womenWelcome'><img src="images/women.png"></div>
-                <div class='copyright'>fempage 2021</div></div>
-                `;             
+                <div class='copyright'>fempage 2021</div></div>`;             
   return loginForm;
 };
 
