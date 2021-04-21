@@ -1,8 +1,9 @@
-export const profilePage = () => {
+import { auth } from "../functions/auth.js";
+
+export const profilePage =()=>{
   const profileTemplate = document.createElement('div');
-  profileTemplate.className = 'profileGrid';
-  const profile = ` <h1>Mi perfil</h1>
-                  `;
+  profileTemplate.className = 'userProfile';
+  const profile = `<h1>Hola! ${auth.currentUser.displayName}</h1>`;
   profileTemplate.innerHTML = profile;
   return profileTemplate;
-};
+}

@@ -328,6 +328,10 @@ h1 {
 .rightBar {
   display: none;
 }
+.postsView{
+  width: 90%;
+  margin: auto;
+}
 
 .feed {
   grid-template-areas: feed;
@@ -457,6 +461,9 @@ h1 {
     background-size: 95% 90%;
     background-position-x: right;
   }
+  .postsView{
+    grid-column: 2/3;
+  }
 
   .welcomeLogo {
     justify-content: left;
@@ -498,12 +505,19 @@ h1 {
     grid-template-areas: leftBar;
     display: flex;
     border: solid 1px #c17f89;
+    grid-row: 1/3;
+    height: fit-content;
+
   }
 
   .rightBar {
     grid-template-areas: rightBar;
     display: flex;
     border: solid 1px #c17f89;
+    grid-column: 3/4;
+    grid-row: 1/3;
+    height: fit-content;
+
   }
 
   .feed {
