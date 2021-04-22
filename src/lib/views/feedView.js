@@ -1,4 +1,5 @@
 import { footer } from '../components/footer.js';
+import { commandBar, post } from '../components/post.js';
 import { newpost } from '../components/posting.js';
 import { topMenu } from '../components/topMenu.js';
 import { leftSideBar, rightSideBar } from '../components/userSideBar.js';
@@ -15,7 +16,9 @@ export const feedBuilt =() =>{
   feedContainer.appendChild(leftSideBar())
   feedContainer.appendChild(newpost());
   feedContainer.appendChild(rightSideBar());
-  feedContainer.appendChild(showPosts());
+  //feedContainer.appendChild(showPosts());
+  feedContainer.appendChild(commandBar());
+  feedContainer.appendChild(post());
   rootContainer.appendChild(footer());
 
   const openMenu = document.querySelector('#openMenu');

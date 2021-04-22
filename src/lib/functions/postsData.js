@@ -11,7 +11,7 @@ export const savePost = () => {
         text: createdPost,
         privacy: document.getElementById('selectPrivacy').value,
         // Agregar imagenes, etiquetas
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
       })
       .catch(function (error) {
         console.error('Error writing new message to database', error);
@@ -20,38 +20,31 @@ export const savePost = () => {
 };
 
 export const showPosts = () => {
-  let posts = document.createElement('div');
-  posts.className = 'postsView'
-  posts.innerHTML = `<div class="commandBar">
-                      <p id="commandText"> Publicaciones</p>
-                      <select name="typePost">
-                      <option value="Todas" label="Todas"></option>
-                      <option value="publicas" label="Publicas"></option>
-                      <option value="privadas" label="Privadas"></option>
-                      </select> 
-                    </div> `;
   let dataPosts = firebase
     .firestore()
     .collection('posts')
     .orderBy('timestamp', 'desc');
   //.limit(12);
-  dataPosts.onSnapshot(function (snapshot) {
-    snapshot.docChanges().forEach(function (change) {
-      var post = change.doc.data();
-      const posting = `
-                    <div class='post'>
-                    <div class='postUserphoto'></div>
-                    <div class='postInfo'>
-                      <h2 class='postedUsername'>${post.userName}</h2>
-                      <p class='postedTime'>${post.timestamp
-                        .toDate()
-                        .toDateString()}</p>
-                    </div>
-                    <p class='postedText'>${post.text}</p>
-                    </div>`;
-      // Faltan los botones de mg, :( y comentar, historia de usuario 4
-      posts.innerHTML += posting;
+  return dataPosts;
+};
+
+export const showUserPosts = () => {
+
+  let dataPosts = firebase
+    .firestore()
+    .collection('posts');
+  let userPost = [];
+  dataPosts.where("userId", "==", firebase.auth().currentUser.uid)
+  .get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      userPost.push(doc.data())
+        // doc.data() is never undefined for query doc snapshots
+        //console.log(doc.id, " => ", doc.data());
     });
   });
-  return posts;
+  console.log(userPost);
+
+  //.limit(12);
 };
+
