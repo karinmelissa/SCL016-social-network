@@ -1,7 +1,7 @@
 export const topMenu = () => {
   const menuTemplate = document.createElement('div');
   menuTemplate.className = 'topMenu';
-  const menu = `  <img src="./images/logoFeed.png">
+  const menu = `  <a href="#/home"><img src="./images/logoFeed.png"></a>
                   <div class="searchBar">
                       <input class="searchInput" type="search" placeholder="buscar"> 
                       <button type="submit"><i class="fa fa-search"></i></button>

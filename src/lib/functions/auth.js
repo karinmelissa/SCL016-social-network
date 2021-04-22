@@ -1,4 +1,4 @@
-//export const auth = firebase.auth();
+export const auth = firebase.auth();
 
 // Register
 export const signUpUser = () => {

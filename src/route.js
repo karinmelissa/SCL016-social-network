@@ -14,7 +14,17 @@ import { profileBuilt } from './lib/views/userProfile.js';
  
 let userFound = false;
 // verifica si el usuario esta registrado
-const userVerification = () => {
+export const userVerification = () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    user ? (userFound = true) : (userFound = false);
+    console.log(userFound); 
+  });
+  return userFound;
+};
+
+let userFound = false;
+// verifica si el usuario esta registrado
+export const userVerification = () => {
   firebase.auth().onAuthStateChanged((user) => {
     user ? (userFound = true) : (userFound = false);
     console.log(userFound); 
@@ -24,7 +34,7 @@ const userVerification = () => {
 
 const rootContainer = document.getElementById('root');
 
-const showTemplate = (hash) => {
+export const showTemplate = (hash) => {
   rootContainer.innerHTML = '';
   switch (hash) {
     case '':
@@ -51,8 +61,8 @@ const showTemplate = (hash) => {
   }
 };
 
-const changeRouter = (hash) => {
-  this.userVerification();
+export const changeRouter = (hash) => {
+  userVerification();
   if(userFound == true){
     switch(hash){
       case '#/home':
@@ -75,7 +85,7 @@ const changeRouter = (hash) => {
   }
 };
 
-const initRouter = () => {
+export const initRouter = () => {
   window.addEventListener('load', changeRouter(window.location.hash));
   // reconoce un cambio en el hash y le pasa ese nuevo hash a changeRouter
   if ('onhashchange' in window) {
@@ -84,4 +94,3 @@ const initRouter = () => {
     };
   }
 };
-export const router = {userVerification, changeRouter};

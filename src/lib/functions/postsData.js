@@ -1,4 +1,4 @@
-//const firestore = firebase.firestore();
+const firestore = firebase.firestore();
 
 export const savePost = () => {
   const createdPost = document.getElementById('writtePost').value;
@@ -17,10 +17,29 @@ export const savePost = () => {
         console.error('Error writing new message to database', error);
       });
   }
-  window.location.hash='/#/home';
 };
 
-export const showPosts = () => {
+/*export const showPosts = (callback) => 
+let posts = document.createElement('div');
+  posts.className = 'postsView'
+  posts.innerHTML = `<div class="commandBar">
+                      <p id="commandText"> Publicaciones</p>
+                      <select name="typePost">
+                      <option value="Todas" label="Todas"></option>
+                      <option value="publicas" label="Publicas"></option>
+                      <option value="privadas" label="Privadas"></option>
+                      </select> 
+                    </div> `;
+  firebase.firestore().collection('post')
+  .onSnapshot((querySnapshop) => {
+    const data = [];
+    querySnapshop.forEach((doc) => {
+      data.push ({id:doc, ...doc.data() })
+    });
+    callback(data);
+  });*/
+
+  export const showPosts = () => {
   let posts = document.createElement('div');
   posts.className = 'postsView'
   posts.innerHTML = `<div class="commandBar">
