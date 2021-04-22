@@ -1,4 +1,4 @@
-const firestore = firebase.firestore();
+//const firestore = firebase.firestore();
 
 export const savePost = () => {
   const createdPost = document.getElementById('writtePost').value;
