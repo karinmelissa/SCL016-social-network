@@ -28,7 +28,49 @@ export const showPosts = () => {
   return dataPosts;
 };
 
-export const showUserPosts = () => {
+let userPostbd = [];
+export const selectUserPosts = () =>{
+  let dataPosts = firebase
+  .firestore()
+  .collection('posts')
+  .orderBy('timestamp', 'desc');
+  dataPosts.where( "userId", "==", firebase.auth().currentUser.uid)
+  .onSnapshot((querySnapShot) => {
+  
+    querySnapShot.forEach((doc) =>{
+      userPostbd.push (doc.data());
+    });
+    console.log(userPostbd);
+  });
+  return userPostbd;
+}
+
+  export const showUserPosts = (userPostbd) => { 
+    let posts = document.createElement('div');
+    posts.className='currentUserPosts';
+    const postnumber = userPostbd.length;
+    for (let i=0; i < postnumber; i++){
+      currentUserPosts = `
+                    <div class='currentPost'>
+                    <div class='postUserphoto'></div>
+                    <div class='postInfo'>
+                      <h2 class='postedUsername'>${userPostbd.userName}</h2>
+                      <p class='postedTime'>${userPostbd[i].timestamp
+                        .toDate()
+                        .toDateString()}</p>
+                    </div>
+                    <p class='postedText'>${userPostbd[i].text}</p>
+                    </div>`;
+      posts.innerHTML += currentUserPosts;
+      console.log('un post');
+    };
+    return showUserPosts;
+  };
+  
+
+  
+
+/*export const showUserPosts = () => {
 
   let dataPosts = firebase
     .firestore()
@@ -46,5 +88,5 @@ export const showUserPosts = () => {
   console.log(userPost);
 
   //.limit(12);
-};
+};*/
 

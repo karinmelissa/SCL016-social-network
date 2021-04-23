@@ -12,17 +12,7 @@ import {
 import { feedBuilt } from './lib/views/feedView.js';
 import { profileBuilt } from './lib/views/userProfile.js';
  
-let userFound = false;
-// verifica si el usuario esta registrado
-export const userVerification = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    user ? (userFound = true) : (userFound = false);
-    console.log(userFound); 
-  });
-  return userFound;
-};
-
-let userFound = false;
+let userFound;
 // verifica si el usuario esta registrado
 export const userVerification = () => {
   firebase.auth().onAuthStateChanged((user) => {

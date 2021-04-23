@@ -1,17 +1,19 @@
 import { footer } from "../components/footer.js";
-import { profilePage } from "../components/profile.js";
+import { commandBarProfile, profilePage } from "../components/profile.js";
 import { topMenu } from "../components/topMenu.js";
 import { close } from "../functions/auth.js";
-import { showUserPosts } from "../functions/postsData.js";
+import { selectUserPosts, showUserPosts } from "../functions/postsData.js";
 
 export const profileBuilt = () =>{
   const rootContainer = document.getElementById('root');
   rootContainer.appendChild(topMenu());
   const profileContainer = document.createElement('div');
-  //profileContainer.className = 'feedGrid';
+  profileContainer.className = 'profileGrid';
   rootContainer.appendChild(profileContainer);
   profileContainer.appendChild(profilePage());
-  showUserPosts();
+  profileContainer.appendChild(commandBarProfile());
+  selectUserPosts();
+  profileContainer.appendChild(showUserPosts());
 
   rootContainer.appendChild(footer());
 
