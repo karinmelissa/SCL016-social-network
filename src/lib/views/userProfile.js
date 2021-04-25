@@ -2,7 +2,7 @@ import { footer } from "../components/footer.js";
 import { commandBarProfile, profilePage } from "../components/profile.js";
 import { topMenu } from "../components/topMenu.js";
 import { close } from "../functions/auth.js";
-import { selectUserPosts, showUserPosts } from "../functions/postsData.js";
+import { showUserPosts } from "../functions/postsData.js";
 
 export const profileBuilt = () =>{
   const rootContainer = document.getElementById('root');
@@ -12,8 +12,8 @@ export const profileBuilt = () =>{
   rootContainer.appendChild(profileContainer);
   profileContainer.appendChild(profilePage());
   profileContainer.appendChild(commandBarProfile());
-  selectUserPosts();
   profileContainer.appendChild(showUserPosts());
+  //profileContainer.appendChild(showUserPosts());
 
   rootContainer.appendChild(footer());
 
