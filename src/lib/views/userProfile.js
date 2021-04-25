@@ -1,5 +1,5 @@
 import { footer } from "../components/footer.js";
-import { commandBarProfile, profilePage } from "../components/profile.js";
+import { commandBarProfile, profilePage, uploadProfileImg } from "../components/profile.js";
 import { topMenu } from "../components/topMenu.js";
 import { close } from "../functions/auth.js";
 import { showUserPosts } from "../functions/postsData.js";
@@ -11,9 +11,9 @@ export const profileBuilt = () =>{
   profileContainer.className = 'profileGrid';
   rootContainer.appendChild(profileContainer);
   profileContainer.appendChild(profilePage());
+
   profileContainer.appendChild(commandBarProfile());
   profileContainer.appendChild(showUserPosts());
-  //profileContainer.appendChild(showUserPosts());
 
   rootContainer.appendChild(footer());
 
@@ -22,6 +22,9 @@ export const profileBuilt = () =>{
                
   const logoutButton = document.getElementById('logout-button');
   logoutButton.addEventListener('click', close);
+
+  const userImage = document.getElementById('userImage');
+  userImage.addEventListener('click', uploadProfileImg());
 }
 
 let showMenu = true;
@@ -35,3 +38,5 @@ const openMenuFunction = (e) => {
     showMenu = true;
   } 
 };
+
+

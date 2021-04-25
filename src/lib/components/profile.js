@@ -4,8 +4,8 @@ export const profilePage =()=>{
   const profileTemplate = document.createElement('div');
   profileTemplate.className = 'userProfile';
   const profile = `<div class="userInfoContainer">
-        <div class="profileImage"><img class="profileImage"></div>
-        <h2 class="userName">${auth.currentUser.displayName} <i class="far fa-edit"></i> </h2>
+        <div class="profileImage"><a><img id = "userImage" class="profileImage"></a></div>
+        <h2 class="userName">${auth.currentUser.displayName} <i id = 'editProfile' class="far fa-edit"></i> </h2>
         <p class="userBio">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor</p>
         <div class="userLinks">
           <a class="userFriends">Amigas(13) </a>
@@ -28,3 +28,8 @@ export const commandBarProfile = ()=>{
                       </select>`;
   return commandBarProfile;
 }
+
+/*export const uploadProfileImg = () => {
+  let imageFile = document.getElementById('uploadImage')
+  console.log(imageFile);
+}*/

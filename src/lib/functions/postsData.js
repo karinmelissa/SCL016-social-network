@@ -28,27 +28,9 @@ export const showPosts = () => {
   return dataPosts;
 };
 
-
-
-/*export const showUserPosts =  userPost => {
-  const userPosts = document.createElement('div');
-  userPosts.className = 'userPosts';
-  let userPostsTemplate = `  <div class='currentPost'>
-                        <div class='postUserphoto'></div>
-                        <div class='postInfo'>
-                        <h2 class='postedUsername'>nombreUsuario</h2>
-                        <p class='postedTime'>Fecha</p>
-                        </div>
-                        <p class='postedText'>texto</p>
-                        </div>`;
-console.log(userPostsTemplate);
-userPosts.innerHTML += userPostsTemplate;
-return userPostsTemplate;
-};*/
-
 export const showUserPosts = () => {
   const userPosts = document.createElement('div');
-  userPosts.className = 'userPosts';
+  userPosts.className = 'profileFeed';
   let dataPosts = firebase
   .firestore()
   .collection('posts')
@@ -58,20 +40,23 @@ export const showUserPosts = () => {
   .then((querySnapShot) => {
     querySnapShot.forEach((doc) => {
       var arrayUserPosts = doc.data();
-    //console.log (`${doc.id} => ${doc.data().text}`);
-    console.log(arrayUserPosts);
-     const userPostsTemplate = `  <div class='currentPost'>
-                            <div class='postUserphoto'></div>
-                            <div class='postInfo'>
-                            <h2 class='postedUsername'>${arrayUserPosts.userName}</h2>
-                            <p class='postedTime'>${arrayUserPosts.timestamp}</p>
-                            </div>
-                            <p class='postedText'>${arrayUserPosts.text}</p>
-                            </div>`;
-    console.log(userPostsTemplate);
+      console.log(arrayUserPosts);
+     const userPostsTemplate = `<div class='post'>
+                                <div class='postUserphoto'></div>
+                                <div class='postInfo'>
+                                <h2 class='postedUsername'>${arrayUserPosts.userName}
+                                <i class="fas fa-ellipsis-h"></i>
+                                </h2>
+                                <p class='postedTime'>${arrayUserPosts.timestamp
+                                  .toDate()
+                                  .toDateString()}</p>
+                                </div>
+                                <p class='postedText'>${arrayUserPosts.text}</p>
+                                </div>`;
     userPosts.innerHTML += userPostsTemplate;
   });  
   })
   .catch(err => console.log(err));
+  return userPosts;
 }
 
