@@ -16,6 +16,7 @@ export const commandBar = ()=>{
 export const post = ()=>{
   let data = showPosts();
   let posts = document.createElement('div');
+  posts.className='posts';
   data.onSnapshot(function (snapshot) {
     snapshot.docChanges().forEach(function (change) {
       var post = change.doc.data();

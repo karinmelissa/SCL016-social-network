@@ -30,10 +30,10 @@ export const showPosts = () => {
 
 export const showUserPosts = () => {
   let dataPosts = firebase
-    .firestore()
-    .collection('posts');
-  let userPost = [];
-  dataPosts.where("userId", "==", firebase.auth().currentUser.uid)
+  .firestore()
+  .collection('posts')
+  .orderBy('timestamp', 'desc');
+  dataPosts.where( "userId", "==", firebase.auth().currentUser.uid)
   .get()
   .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {

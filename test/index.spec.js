@@ -1,28 +1,39 @@
-// importamos la funcion que vamos a testear
-/* import {homePage} from '../src/lib/components/homePage.js';
+import MockFirebase from 'mock-cloud-firestore';
 
-const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf8');
-let dom
-let container
-describe('index.html', () => {
-  beforeEach(() => {
-    // Constructing a new JSDOM with this option is the key
-    // to getting the code in the script tag to execute.
-    // This is indeed dangerous and should only be done with trusted content.
-    // https://github.com/jsdom/jsdom#executing-scripts
-    dom = new JSDOM(html, { runScripts: 'testInception' })
-    container = dom.window.document.body
+import { savePost, showPosts } from '../src/lib/functions/postsData.js';
+
+const fixtureData = {
+  __collection__: {
+    posts: {
+      __doc__: {
+          user_id1: {
+          privacy: "public",
+          text: 'Hola squad',
+          timestamp: '20 de abril de 2021 a las 09:17:33 UTC-4',
+          userId: 'HBUVPRVvkAdHVRfP68xtc3YiIGl2',
+          userName: 'Valeria',
+        },
+          user_id2: {
+          privacy: "public",
+          text: 'Ojala resulte este test',
+          timestamp: '20 de abril de 2021 a las 09:20:33 UTC-4',
+          userId: 'HBUVPRVvkAdHVRfP68xtc3YiIGl3',
+          userName: 'Karin',
+        },
+      }
+    }
+  }
+}
+global.firebase = new MockFirebase(fixtureData, { isNativeSnapshotListenerEnabled: true});
+
+
+describe ('agrega notas', () =>{
+  it ('deberia agregar un post', (done) => {
+    return savePost ('Hola Mundo').then((data) =>{
+      console.log(data);
+      expect (data).toBe ('Hola Mundo');
+  
+    })
   });
 });
- describe('testing route functions', () => {
-  it('should return type bolean', () => {
-    expect(typeof userFound).toBe('bolean');
-  });
-});
-container.getElementById('root').innerHTML = homePage();
-it('renders a button element', () => {
-  expect(container.querySelector('button')).not.toBeNull()
-  expect(getByText(container, 'Iniciar Sesión')).toBeInTheDocument()
-});
 
-*/

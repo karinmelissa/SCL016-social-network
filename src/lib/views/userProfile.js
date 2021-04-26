@@ -9,10 +9,12 @@ export const profileBuilt = () =>{
   const rootContainer = document.getElementById('root');
   rootContainer.appendChild(topMenu());
   const profileContainer = document.createElement('div');
-  //profileContainer.className = 'feedGrid';
+  profileContainer.className = 'profileGrid';
   rootContainer.appendChild(profileContainer);
   profileContainer.appendChild(profilePage());
-  profileContainer.appendChild(profilePost());
+
+  profileContainer.appendChild(commandBarProfile());
+  profileContainer.appendChild(showUserPosts());
 
   rootContainer.appendChild(footer());
 
@@ -21,6 +23,9 @@ export const profileBuilt = () =>{
                
   const logoutButton = document.getElementById('logout-button');
   logoutButton.addEventListener('click', close);
+
+  const userImage = document.getElementById('userImage');
+  userImage.addEventListener('click', uploadProfileImg());
 }
 
 let showMenu = true;
@@ -34,3 +39,5 @@ const openMenuFunction = (e) => {
     showMenu = true;
   } 
 };
+
+
