@@ -1,8 +1,9 @@
 import { footer } from "../components/footer.js";
-import { commandBarProfile, profilePage, uploadProfileImg } from "../components/profile.js";
+import { commandBarProfile, profilePage } from "../components/profile.js";
 import { topMenu } from "../components/topMenu.js";
 import { close } from "../functions/auth.js";
 import { showUserPosts } from "../functions/postsData.js";
+import { openModal } from "../components/modalProfile.js"
 
 export const profileBuilt = () =>{
   const rootContainer = document.getElementById('root');
@@ -23,8 +24,8 @@ export const profileBuilt = () =>{
   const logoutButton = document.getElementById('logout-button');
   logoutButton.addEventListener('click', close);
 
-  const userImage = document.getElementById('userImage');
-  userImage.addEventListener('click', uploadProfileImg());
+  const userImage = document.getElementById('editProfile');
+  userImage.addEventListener('click', openModal);
 }
 
 let showMenu = true;

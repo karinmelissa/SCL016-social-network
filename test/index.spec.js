@@ -1,4 +1,4 @@
-import MockFirebase from 'mock-cloud-firestore';
+/*import MockFirebase from 'mock-cloud-firestore';
 
 import { savePost, showPosts } from '../src/lib/functions/postsData.js';
 
@@ -35,5 +35,40 @@ describe ('agrega notas', () =>{
   
     })
   });
-});
+});*/
 
+import router from '../src/route.js';
+
+/*import {router} from '../src/route.js';*/
+
+describe('Pruebas de navegacion', () => {
+  it('Rutas protegidas por sesion', () => {
+
+    router.userVerification = jest.fn();
+    router.showTemplate = jest.fn();
+
+    //Sin sesion
+    router.userVerification.mockImplementation(() => false);
+
+    window.location.hash = '#/profile';
+    router.changeRouter('#/profile');
+    expect(window.location.hash).toBe('');
+
+    window.location.hash = '#/home';
+    router.changeRouter('#/home');
+    expect(window.location.hash).toBe('');
+
+    //Con sesion
+
+    router.userVerification.mockImplementation(() => true);
+
+    window.location.hash = '#/profile';
+    router.changeRouter('#/profile');
+    expect(window.location.hash).toBe('#/profile');
+
+    window.location.hash = '#/home';
+    router.changeRouter('#/home');
+    expect(window.location.hash).toBe('#/home');
+
+  });
+});

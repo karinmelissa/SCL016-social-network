@@ -4,7 +4,7 @@ export const profilePage =()=>{
   const profileTemplate = document.createElement('div');
   profileTemplate.className = 'userProfile';
   const profile = `<div class="userInfoContainer">
-        <div class="profileImage"><a><img id = "userImage" class="profileImage"></a></div>
+        <div class="profileImage"><a><img id = "userImage" class="profileImage" src="${auth.currentUser.photoURL}"></a></div>
         <h2 class="userName">${auth.currentUser.displayName} <i id = 'editProfile' class="far fa-edit"></i> </h2>
         <p class="userBio">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor</p>
         <div class="userLinks">
