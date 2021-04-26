@@ -11,10 +11,10 @@ import {
 } from './lib/functions/auth.js';
 import { feedBuilt } from './lib/views/feedView.js';
 import { profileBuilt } from './lib/views/userProfile.js';
-
-let userFound = false
+ 
+let userFound;
 // verifica si el usuario esta registrado
-const userVerification = () => {
+export const userVerification = () => {
   firebase.auth().onAuthStateChanged((user) => {
     user ? (userFound = true) : (userFound = false);
     console.log(userFound); 
@@ -51,7 +51,7 @@ export const showTemplate = (hash) => {
   }
 };
 
-const changeRouter = (hash) => {
+export const changeRouter = (hash) => {
   userVerification();
   if(userFound == true){
     switch(hash){
@@ -84,5 +84,3 @@ export const initRouter = () => {
     };
   }
 };
-
-

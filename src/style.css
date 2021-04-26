@@ -212,9 +212,9 @@ h1 {
   display: grid;
   width: 100%;
   grid-template-areas:
-    "topcontainer"
-    "feed"
-    "footer";
+    "createPost"
+    "commandBar"
+    "posts";
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   background-color: #ffffff;
@@ -328,13 +328,16 @@ h1 {
 .rightBar {
   display: none;
 }
-.postsView{
+/*.postsView{
   width: 90%;
   margin: auto;
-}
-
-.feed {
-  grid-template-areas: feed;
+}*/
+/*.posts{
+  grid-template-areas: posts;
+  width: 90%;
+}*/
+.posts {
+  grid-template-areas: posts;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -342,6 +345,7 @@ h1 {
 }
 
 .commandBar {
+  grid-template-areas: commandBar;
   display: flex;
   width: 90%;
   flex-direction: row;
@@ -350,11 +354,12 @@ h1 {
   color: #797ad4;
 }
 
-#newPosts{
+#newPosts {
   width: 100%;
 }
 
 .createPost {
+  grid-template-areas: "createPost";
   margin: auto;
   border: 3px solid #797ad4;
   box-sizing: border-box;
@@ -390,6 +395,11 @@ h1 {
   justify-content: space-around;
 }
 
+.commandPosting{
+  display: flex;
+  justify-content: flex-end;
+}
+
 .postingButton {
   width: 90px;
   height: 36px;
@@ -398,21 +408,20 @@ h1 {
   border-style: hidden;
   color: white;
   outline: none;
+  margin-right: 10px;
   margin-left: 5%;
 }
+
 
 .postingButton:active {
   background: #7eb3dd;
 }
 
 .commandBar select,
-#selectPrivacy{
+#selectPrivacy {
   color: #797ad4;
   border-color: #797ad4;
-  margin-left: 45%;
-}
-.posts{
-  width: 90%;
+  /*margin-left: 45%;*/
 }
 
 .post {
@@ -424,70 +433,121 @@ h1 {
   margin: 5px auto;
   display: grid;
   grid-template-areas:
-      "userPhoto userPhoto"
-      "userName userName"
-      "mainArea mainArea";
+    "userPhoto userPhoto"
+    "userName userName"
+    "mainArea mainArea";
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 1fr 1fr;
 }
-.postUserphoto{
+
+.postUserphoto {
   background-color: #c17f89;
   height: 27px;
   width: 27px;
   border-radius: 50px;
   margin: 5px auto;
-
 }
 
-.postedUsername{
+.postedUsername {
   font-size: 20px;
   font-weight: 500;
-  color: #343A5A;
+  color: #343a5a;
 }
-.postedText{
+
+.postedText {
   grid-column: 1/4;
 }
-.userInfoContainer{
+
+.userProfile{
+  grid-template-areas: userInformation;
+  width: 90%;
+  margin:auto;
+  margin-top: 20px;
+}
+
+.userInfoContainer {
   margin: auto;
-  border: 5px solid #C17F89;
+  border: 5px solid #c17f89;
   border-radius: 0px 0px 10px 10px;
   box-sizing: border-box;
   width: 100%;
   display: grid;
   grid-template-areas:
-        "userPhoto userPhoto"
-        "userName userName"
-        "userBio userBio";
+    "userPhoto userPhoto"
+    "userName userName"
+    "userBio userBio";
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr 1fr .5fr;
+  grid-template-rows: 1fr 1fr 0.5fr;
 }
 
-.profileImage{
+.profileImage {
   width: 50px;
   height: 50px;
-  background: #F4C0C2;
+  background: #f4c0c2;
   border-radius: 50px;
 }
-.userBio{
+
+.userBio {
   grid-column: 1/3;
   margin: 0px 20px;
-  color: #343A5A;
+  color: #343a5a;
 }
-.userName{
-  color:#343A5A;
+
+.userName {
+  color: #343a5a;
   align-self: center;
 }
-.fa-edit{
-  margin-left: 25%;
+
+.fa-edit {
+  float:right;
+  margin-right: 10px;
 }
-.userLinks{
+
+.userLinks {
   grid-column: 1/3;
   display: flex;
   justify-content: space-around;
-  color: #343A5A;
+  color: #343a5a;
 }
-.profileImage{
+
+.profileImage {
   margin: auto;
+}
+
+.profileGrid {
+  display: grid;
+  width: 100%;
+  grid-template-areas:
+    "userInformation"
+    "commandBarProfile"
+    "profileFeed";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  background-color: #ffffff;
+}
+
+.commandBarProfile{
+  grid-template-areas: commandBarProfile;
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px;
+  color: #797ad4;
+}
+
+.profileFeed{
+  grid-template-areas: profileFeed;
+  display: flex;
+  width: 90%;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fa-ellipsis-h{
+  float:right;
+  margin-right: 10px;
 }
 
 /*desktop view*/
@@ -502,9 +562,6 @@ h1 {
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: 95% 90%;
     background-position-x: right;
-  }
-  .postsView{
-    grid-column: 2/3;
   }
 
   .welcomeLogo {
@@ -531,37 +588,65 @@ h1 {
     display: grid;
     width: 100%;
     grid-template-areas:
-      "topcontainer topcontainer topcontainer"
-      "leftBar feed rightBar"
-      "footer footer footer";
+      "leftBar createPost rightBar"
+      "leftBar commandBar rightBar"
+      "leftBar posts rightBar";
     grid-template-columns: 0.4fr 1fr 0.4fr;
-    grid-template-rows: auto auto auto auto;
-  }
-
-  .topcontainer {
-    grid-template-areas: topcontainer;
-    grid-column: 1/4;
+    grid-template-rows: auto auto auto;
   }
 
   .leftBar {
     grid-template-areas: leftBar;
     display: flex;
     border: solid 1px;
-    grid-row: 1/3;
-    height: fit-content;
+    height: 400px;
+    grid-column: 1/2;
+    grid-row: 1/4;
   }
 
   .rightBar {
     grid-template-areas: rightBar;
     display: flex;
     border: solid 1px;
-    height: fit-content;
+    height: 400px;
     grid-column: 3/4;
-    grid-row: 1/3;
+    grid-row: 1/4;
   }
 
-  .feed {
-    grid-template-areas: feed;
-    display: flex;
+  .commandBar {
+    grid-template-areas: commandBar;
+    grid-column: 2/2;
+    grid-row: 2/3;
   }
-}
+
+  .posts {
+    grid-column: 2/3;
+  }
+
+  .profileGrid {
+    display: grid;
+    width: 100%;
+    grid-template-areas:
+      "userInformation userInformation"
+      "commandBarProfile rightBar"
+      "profileFeed rightBar";
+    grid-template-columns: 1fr 0.3fr;
+    grid-template-rows: auto;
+  }
+
+  .userProfile {
+    grid-template-areas: userInformation;
+    grid-column: 1/3;
+    grid-row: 1/2;
+  }
+
+  .commandBarProfile{
+    grid-column: 1/2;
+    grid-row:2/3;
+  }
+
+  .profileFeed{
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+} /* end desktop view

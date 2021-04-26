@@ -8,17 +8,17 @@ import { savePost, showPosts } from '../functions/postsData.js';
 
 export const feedBuilt =() =>{
   const rootContainer = document.getElementById('root');
-  rootContainer.appendChild(topMenu());
   const feedContainer = document.createElement('div');
   feedContainer.className = 'feedGrid';
-  rootContainer.appendChild(feedContainer);
+  rootContainer.appendChild(topMenu());
 
+  rootContainer.appendChild(feedContainer);
   feedContainer.appendChild(leftSideBar())
   feedContainer.appendChild(newpost());
-  feedContainer.appendChild(rightSideBar());
   //feedContainer.appendChild(showPosts());
   feedContainer.appendChild(commandBar());
   feedContainer.appendChild(post());
+  feedContainer.appendChild(rightSideBar());
   rootContainer.appendChild(footer());
 
   const openMenu = document.querySelector('#openMenu');
