@@ -29,7 +29,6 @@ export const showPosts = () => {
 };
 
 export const showUserPosts = () => {
-
   let dataPosts = firebase
     .firestore()
     .collection('posts');
@@ -43,8 +42,6 @@ export const showUserPosts = () => {
         //console.log(doc.id, " => ", doc.data());
     });
   });
-  console.log(userPost);
-
-  //.limit(12);
+  return userPost;
 };
 

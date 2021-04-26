@@ -1,4 +1,5 @@
 import { footer } from "../components/footer.js";
+import { profilePost } from "../components/post.js";
 import { profilePage } from "../components/profile.js";
 import { topMenu } from "../components/topMenu.js";
 import { close } from "../functions/auth.js";
@@ -11,7 +12,7 @@ export const profileBuilt = () =>{
   //profileContainer.className = 'feedGrid';
   rootContainer.appendChild(profileContainer);
   profileContainer.appendChild(profilePage());
-  showUserPosts();
+  profileContainer.appendChild(profilePost());
 
   rootContainer.appendChild(footer());
 

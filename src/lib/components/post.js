@@ -1,4 +1,4 @@
-import { showPosts } from "../functions/postsData.js";
+import { showPosts, showUserPosts } from "../functions/postsData.js";
 
 export const commandBar = ()=>{
   let commandBar = document.createElement('div');
@@ -34,5 +34,15 @@ export const post = ()=>{
       posts.innerHTML += posting;
     });
   });
+  return posts;
+}
+export const profilePost = ()=>{
+  let data = showUserPosts();
+  console.log(data);
+  let posts = document.createElement('div');
+  console.log(data.length)
+  for(let i=0;i<data.length;i++){
+    console.log('hola')
+  }
   return posts;
 }
