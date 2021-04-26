@@ -550,6 +550,55 @@ h1 {
   margin-right: 10px;
 }
 
+.profileModal{
+  position: absolute;
+    top: 120px;
+    left: 25%;
+    margin: auto;
+    border: 5px solid #C17F89;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 50%;
+    text-align: center;
+    background-color: #ffffff;
+}
+.profileEdit{
+  color:#343A5A;
+}
+form{
+  color:#343A5A;
+}
+.bioChanged{
+ resize: none;
+  box-sizing: border-box;
+}
+
+.editProfileButton{
+  margin: 10px auto;
+  background-color: #343a5a;
+  border-radius: 50px;
+  color: #f4c0c2;
+  text-align: center;
+  display: block;
+  padding: 10px;
+  font-size: 18px;
+  width: 150px;
+  border-style: hidden;
+}
+
+form input,
+textarea{
+  color: rgb(56, 56, 56);
+  background-color: rgb(236,236,236);
+  width: 80%;
+  height: 40px;
+  border:rgb(236,236,236) ;
+}
+form textarea{
+  height: 100px;
+}
+
+
 /*desktop view*/
 @media only screen and (min-width: 769px) {
   .mainGrid {

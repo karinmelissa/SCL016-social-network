@@ -40,7 +40,6 @@ export const showUserPosts = () => {
   .then((querySnapShot) => {
     querySnapShot.forEach((doc) => {
       var arrayUserPosts = doc.data();
-      console.log(arrayUserPosts);
      const userPostsTemplate = `<div class='post'>
                                 <div class='postUserphoto'></div>
                                 <div class='postInfo'>
@@ -60,3 +59,8 @@ export const showUserPosts = () => {
   return userPosts;
 }
 
+//edit profile
+const editarProfile = () => {
+  
+
+}
