@@ -1,4 +1,4 @@
-import { initRouter } from './route.js';
+import { initRouter } from '../route.js';
 import { userVerification } from '../route.js';
 
 const init = () => {

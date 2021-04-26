@@ -37,13 +37,3 @@ export const post = ()=>{
   });
   return posts;
 }
-export const profilePost = ()=>{
-  let data = showUserPosts();
-  console.log(data);
-  let posts = document.createElement('div');
-  console.log(data.length)
-  for(let i=0;i<data.length;i++){
-    console.log('hola')
-  }
-  return posts;
-}

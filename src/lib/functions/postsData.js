@@ -29,19 +29,34 @@ export const showPosts = () => {
 };
 
 export const showUserPosts = () => {
+  const userPosts = document.createElement('div');
+  userPosts.className = 'profileFeed';
   let dataPosts = firebase
   .firestore()
   .collection('posts')
   .orderBy('timestamp', 'desc');
   dataPosts.where( "userId", "==", firebase.auth().currentUser.uid)
   .get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      userPost.push(doc.data())
-        // doc.data() is never undefined for query doc snapshots
-        //console.log(doc.id, " => ", doc.data());
-    });
-  });
-  return userPost;
-};
+  .then((querySnapShot) => {
+    querySnapShot.forEach((doc) => {
+      var arrayUserPosts = doc.data();
+      console.log(arrayUserPosts);
+     const userPostsTemplate = `<div class='post'>
+                                <div class='postUserphoto'></div>
+                                <div class='postInfo'>
+                                <h2 class='postedUsername'>${arrayUserPosts.userName}
+                                <i class="fas fa-ellipsis-h"></i>
+                                </h2>
+                                <p class='postedTime'>${arrayUserPosts.timestamp
+                                  .toDate()
+                                  .toDateString()}</p>
+                                </div>
+                                <p class='postedText'>${arrayUserPosts.text}</p>
+                                </div>`;
+    userPosts.innerHTML += userPostsTemplate;
+  });  
+  })
+  .catch(err => console.log(err));
+  return userPosts;
+}
 
