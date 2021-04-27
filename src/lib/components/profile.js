@@ -1,20 +1,33 @@
 import { auth } from "../functions/auth.js";
+import { firestore } from "../functions/postsData.js";
 
 export const profilePage =()=>{
   const profileTemplate = document.createElement('div');
   profileTemplate.className = 'userProfile';
-  const profile = `<div class="userInfoContainer">
-       <div class="profileImage"><a><img id = "userImage" class="profileImage"></a></div>
-        <h2 class="userName">${auth.currentUser.displayName} <i id = 'editProfile' class="far fa-edit"></i> </h2>
-        <p class="userBio">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor</p>
+  let database = firebase
+  .firestore()
+  .collection('userInfo')
+  database.where( "userId", "==", firebase.auth().currentUser.uid)
+  .get()
+  .then((e) => {
+    e.forEach((doc) => {
+      let userInfo = doc.data();
+      const profile = `<div class="userInfoContainer">
+        <div class="profileImage"><a><img id = "userImage" class="profileImage" src="${userInfo.profilePicture}"></a></div>
+        <h2 class="userName">${userInfo.userName} <button id='editProfileButton' class='editProfile'><i id='editProfileButton' class="far fa-edit"></i></button> </h2>
+        <p class="userBio">${userInfo.userBio}</p>
         <div class="userLinks">
           <a class="userFriends">Amigas(13) </a>
           <a class="userRooms">Mis Salas(4)</a>
         </div>
     </div>`;
-  profileTemplate.innerHTML = profile;
+    profileTemplate.innerHTML = profile;
+    });
+  });
+
   return profileTemplate;
 }
+  
 
 export const commandBarProfile = ()=>{
   let commandBarProfile = document.createElement('div');

@@ -5,6 +5,7 @@ export const signUpUser = () => {
   const signupForm = document.querySelector('#registerForm');
   signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    const name = document.getElementById('userName').value;
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;
     const passwordConfirmation = document.getElementById('confirm-password')
@@ -15,9 +16,16 @@ export const signUpUser = () => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
+        firebase.firestore().collection('userInfo')
+        .add({
+          userId: firebase.auth().currentUser.uid,
+          userEmail : email ,
+          userName : name,
+          userBio: 'Hola, mi nombre es ' + name,
+          profilePicture : "Upload profile picture"
+        })
         userCredential.user.updateProfile({
-          displayName: document.getElementById('userName').value,
-          // window.location.href = '#/home'
+          displayName: name,
         });
       })
       .catch(() => {
