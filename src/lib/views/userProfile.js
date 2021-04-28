@@ -3,7 +3,6 @@ import { commandBarProfile, profilePage } from "../components/profile.js";
 import { topMenu } from "../components/topMenu.js";
 import { close } from "../functions/auth.js";
 import { showUserPosts } from "../functions/postsData.js";
-import { openModal } from "../components/modalProfile.js"
 
 export const profileBuilt = () =>{
   const rootContainer = document.getElementById('root');
@@ -12,22 +11,16 @@ export const profileBuilt = () =>{
   profileContainer.className = 'profileGrid';
   rootContainer.appendChild(profileContainer);
   profileContainer.appendChild(profilePage());
-
   profileContainer.appendChild(commandBarProfile());
   profileContainer.appendChild(showUserPosts());
   
- 
   rootContainer.appendChild(footer());
 
   const openMenu = document.getElementById('openMenu');
   openMenu.addEventListener('click', openMenuFunction);
-               
+
   const logoutButton = document.getElementById('logout-button');
   logoutButton.addEventListener('click', close);
-
-  const userImage = document.getElementById('editProfile');
-  console.log(userImage);
-  userImage.addEventListener('click', openModal);
 }
 
 const openMenuFunction = (e) => {

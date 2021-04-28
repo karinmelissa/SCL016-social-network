@@ -1,4 +1,5 @@
-const firestore = firebase.firestore();
+import { editPost }  from '../components/modalPostEdit.js'
+export const firestore = firebase.firestore();
 
 export const savePost = () => {
   const createdPost = document.getElementById('writtePost').value;
@@ -46,8 +47,8 @@ export const showUserPosts = () => {
                                 <h2 class='postedUsername'>${arrayUserPosts.userName}
                                 <i id ='editPost' class="fas fa-ellipsis-h">
                                 <div id='menuEdit' class="menuEdit">
-                                    <button>Editar</button></a>
-                                    <button ('${doc.id})>Borrar</button>
+                                    <button id = 'editpost' value='${doc.id}'>Editar</button></a>
+                                    <button id ='deletepost' value='${doc.id}'>Borrar</button>
                                  </div>
                                  </i>
                                 </h2>
@@ -58,7 +59,14 @@ export const showUserPosts = () => {
                                 <p class='postedText'>${arrayUserPosts.text}</p>
                                 </div>`;
     userPosts.innerHTML += userPostsTemplate;
+    
   });  
+    const clickEdit = document.querySelectorAll('#editpost');
+    console.log(clickEdit);
+    clickEdit.forEach(item => {item.addEventListener('click', () => editPost (item.value))});
+    const clickDelete = document.querySelectorAll('#deletepost');
+    console.log(clickDelete);
+    clickDelete.forEach(item => {item.addEventListener('click', () => deletePost (item.value))});
     const openMenuEdit = document.querySelectorAll('#editPost');
     console.log(openMenuEdit);
     openMenuEdit.forEach(item => {item.addEventListener('click', function () {
@@ -72,15 +80,22 @@ export const showUserPosts = () => {
     }
     }
     )});
+    
   })
   .catch(err => console.log(err));
   return userPosts;
 };
-
 let showMenuEditcontrol = true;
 
   /**/
 
 //edit and delete post
-//const menuPost= () => {
+
+const deletePost= (id) => {
+    firebase.firestore().collection("posts").doc(id).delete().then(() => {
+    console.log("Document successfully deleted! " + id);
+}).catch((error) => {
+  console.error("Error removing document: ", error);
+}
+)}
 

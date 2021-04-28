@@ -566,15 +566,15 @@ h1 {
 
 .profileModal{
   position: absolute;
-    top: 120px;
-    left: 25%;
-    margin: auto;
-    border: 5px solid #C17F89;
-    border-radius: 10px;
-    box-sizing: border-box;
-    width: 50%;
-    text-align: center;
-    background-color: #ffffff;
+  top: 120px;
+  left: 10%;
+  margin: auto;
+  border: 5px solid #C17F89;
+  border-radius: 10px;
+  box-sizing: border-box;
+  width: 80%;
+  text-align: center;
+  background-color: #ffffff;
 }
 .profileEdit{
   color:#343A5A;
@@ -643,8 +643,8 @@ form textarea{
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: 95% 90%;
     background-position-x: right;
+    height: 100vh;
   }
-
   .welcomeLogo {
     justify-content: left;
     padding-top: 26px;
@@ -729,5 +729,12 @@ form textarea{
   .profileFeed{
     grid-column: 1/2;
     grid-row: 3/4;
+  }
+  .profileModal{
+    position: absolute;
+    top: 150px;
+    left: 15%;
+    width: 70%;
+    padding: 10px;
   }
 } /* end desktop view
