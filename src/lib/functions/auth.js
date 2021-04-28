@@ -1,4 +1,4 @@
-export const auth = firebase.auth();
+//export const auth = firebase.auth();
 
 // Register
 export const signUpUser = () => {
@@ -13,7 +13,7 @@ export const signUpUser = () => {
     if (password !== passwordConfirmation) {
       document.querySelector('.error-control').textContent = 'Las contraseñas deben ser iguales';
     }
-    auth
+    firebase.auth()
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         firebase.firestore().collection('userInfo')
@@ -40,7 +40,7 @@ export const signInUser = () => {
     e.preventDefault();
     const email = document.getElementById('signing-email').value;
     const password = document.getElementById('signing-password').value;
-    auth
+    firebase.auth()
       .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         window.location.href = '#/home';
@@ -54,7 +54,7 @@ export const signInUser = () => {
 // logout session from feed
 export const close = (e) => {
   e.preventDefault();
-  auth.signOut().then(() => {
+  firebase.auth().signOut().then(() => {
     window.location.hash = '';
   });
 };
@@ -63,7 +63,7 @@ export const close = (e) => {
 export const signInGoogle = (e) => {
   e.preventDefault();
   const provider = new firebase.auth.GoogleAuthProvider();
-  auth.signInWithPopup(provider).then((result) => {
+  firebase.auth().signInWithPopup(provider).then((result) => {
     console.log(result);
     window.location.href = '#/home';
   });

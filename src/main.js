@@ -1,9 +1,8 @@
-import { initRouter } from '../route.js';
-import { userVerification } from '../route.js';
+import services from '../route.js';
 
 const init = () => {
-  userVerification();
-  initRouter();
+  services.userVerification();
+  services.initRouter();
 };
 
 window.addEventListener('load', init);

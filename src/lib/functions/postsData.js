@@ -1,10 +1,10 @@
 import { editPost }  from '../components/modalPostEdit.js'
-export const firestore = firebase.firestore();
+//const firestore = firebase.firestore();
 
 export const savePost = () => {
   const createdPost = document.getElementById('writtePost').value;
   if (createdPost !== '') {
-    return firestore
+    return firebase.firestore()
       .collection('posts')
       .add({
         userId: firebase.auth().currentUser.uid,
