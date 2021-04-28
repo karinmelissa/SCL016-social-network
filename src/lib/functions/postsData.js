@@ -44,23 +44,43 @@ export const showUserPosts = () => {
                                 <div class='postUserphoto'></div>
                                 <div class='postInfo'>
                                 <h2 class='postedUsername'>${arrayUserPosts.userName}
-                                <i class="fas fa-ellipsis-h"></i>
+                                <i id ='editPost' class="fas fa-ellipsis-h">
+                                <div id='menuEdit' class="menuEdit">
+                                    <button>Editar</button></a>
+                                    <button ('${doc.id})>Borrar</button>
+                                 </div>
+                                 </i>
                                 </h2>
+                                </div>
                                 <p class='postedTime'>${arrayUserPosts.timestamp
                                   .toDate()
                                   .toDateString()}</p>
-                                </div>
                                 <p class='postedText'>${arrayUserPosts.text}</p>
                                 </div>`;
     userPosts.innerHTML += userPostsTemplate;
   });  
+    const openMenuEdit = document.querySelectorAll('#editPost');
+    console.log(openMenuEdit);
+    openMenuEdit.forEach(item => {item.addEventListener('click', function () {
+    if (showMenuEditcontrol === true){
+      item.childNodes[1].style.display='block';
+      showMenuEditcontrol = false;
+    }
+    else {
+      item.childNodes[1].style.display='none';
+      showMenuEditcontrol = true;
+    }
+    }
+    )});
   })
   .catch(err => console.log(err));
   return userPosts;
-}
+};
 
-//edit profile
-const editarProfile = () => {
-  
+let showMenuEditcontrol = true;
 
-}
+  /**/
+
+//edit and delete post
+//const menuPost= () => {
+
