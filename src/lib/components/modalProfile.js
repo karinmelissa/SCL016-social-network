@@ -17,7 +17,7 @@ export const modalProfile =()=>{
   return editProfileTemplate;
 }
 
-export const openModal = () => {
+export const openModal = (docId) => {
   const rootContainer = document.getElementById('root');
   rootContainer.appendChild(modalProfile());
   const editProfileForm = document.getElementById('editProfileForm');
@@ -26,24 +26,17 @@ export const openModal = () => {
     let database = firebase
     .firestore()
     .collection('userInfo')
-  database.where( "userId", "==", firebase.auth().currentUser.uid)
-  .update({
-    userBio : document.getElementById('bioChanged').value ,
-    userName: document.getElementById('usernameChanged').value,
-  })
-    //let nombre = document.getElementById('usernameChanged').value;
-    //let file = document.getElementById ('profileImage').value;
-    //let storageRef = storage.ref(/imgProfile/ + file.name);
-
-    //user.updateProfile({ 
-    //displayName: nombre,
-    //photoURL: storageRef
+    .doc(docId);
+    database.update({
+      userBio : document.getElementById('bioChanged').value ,
+      userName: document.getElementById('usernameChanged').value,
+    })/*
   .then(function() {
     console.log('datos actualizados');
   }).catch(function(error) {
     // An error happened.
-  });
-  });
+  });*/
+  }); 
 }
 
 const closeModal = () =>{

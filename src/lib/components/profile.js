@@ -1,5 +1,6 @@
 import { auth } from "../functions/auth.js";
 import { firestore } from "../functions/postsData.js";
+import { openModal } from "./modalProfile.js";
 
 export const profilePage =()=>{
   const profileTemplate = document.createElement('div');
@@ -22,9 +23,10 @@ export const profilePage =()=>{
         </div>
     </div>`;
     profileTemplate.innerHTML = profile;
+    const showModal = document.getElementById('editProfileButton');
+    showModal.addEventListener('click',()=>openModal(doc.id));
     });
   });
-
   return profileTemplate;
 }
   
