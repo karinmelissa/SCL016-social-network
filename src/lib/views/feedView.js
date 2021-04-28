@@ -4,7 +4,7 @@ import { newpost } from '../components/posting.js';
 import { topMenu } from '../components/topMenu.js';
 import { leftSideBar, rightSideBar } from '../components/userSideBar.js';
 import { close } from '../functions/auth.js';
-import { savePost, showPosts } from '../functions/postsData.js';
+import { savePost } from '../functions/postsData.js';
 
 export const feedBuilt =() =>{
   const rootContainer = document.getElementById('root');
