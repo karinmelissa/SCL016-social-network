@@ -31,14 +31,13 @@ export const feedBuilt =() =>{
   createPost.addEventListener('click', savePost); 
 }
 
-let showMenu = true;
 const openMenuFunction = (e) => {
-  if (showMenu === true){
+  let showMenu = document.getElementById('menu');
+  let displayMenu = showMenu.style.display;
+  if (displayMenu == 'none' || displayMenu == '') {
     document.getElementById('menu').style.display='block';
-    showMenu = false;
   }
   else {
     document.getElementById('menu').style.display='none';
-    showMenu = true;
   } 
 };

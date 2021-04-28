@@ -13,23 +13,26 @@ export const profileBuilt = () =>{
   profileContainer.appendChild(profilePage());
   profileContainer.appendChild(commandBarProfile());
   profileContainer.appendChild(showUserPosts());
+  
   rootContainer.appendChild(footer());
 
-  const openMenu = document.querySelector('#openMenu');
+  const openMenu = document.getElementById('openMenu');
   openMenu.addEventListener('click', openMenuFunction);
 
   const logoutButton = document.getElementById('logout-button');
   logoutButton.addEventListener('click', close);
 }
 
-let showMenu = true;
-const openMenuFunction = () => {
-  if (showMenu === true){
+const openMenuFunction = (e) => {
+  let showMenu = document.getElementById('menu');
+  let displayMenu = showMenu.style.display;
+  if (displayMenu == 'none' || displayMenu == '') {
     document.getElementById('menu').style.display='block';
-    showMenu = false;
   }
   else {
     document.getElementById('menu').style.display='none';
-    showMenu = true;
   } 
 };
+
+
+

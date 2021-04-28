@@ -1,3 +1,4 @@
+import { editPost }  from '../components/modalPostEdit.js'
 export const firestore = firebase.firestore();
 
 export const savePost = () => {
@@ -44,23 +45,57 @@ export const showUserPosts = () => {
                                 <div class='postUserphoto'></div>
                                 <div class='postInfo'>
                                 <h2 class='postedUsername'>${arrayUserPosts.userName}
-                                <i class="fas fa-ellipsis-h"></i>
+                                <i id ='editPost' class="fas fa-ellipsis-h">
+                                <div id='menuEdit' class="menuEdit">
+                                    <button id = 'editpost' value='${doc.id}'>Editar</button></a>
+                                    <button id ='deletepost' value='${doc.id}'>Borrar</button>
+                                 </div>
+                                 </i>
                                 </h2>
+                                </div>
                                 <p class='postedTime'>${arrayUserPosts.timestamp
                                   .toDate()
                                   .toDateString()}</p>
-                                </div>
                                 <p class='postedText'>${arrayUserPosts.text}</p>
                                 </div>`;
     userPosts.innerHTML += userPostsTemplate;
+    
   });  
+    const clickEdit = document.querySelectorAll('#editpost');
+    console.log(clickEdit);
+    clickEdit.forEach(item => {item.addEventListener('click', () => editPost (item.value))});
+    const clickDelete = document.querySelectorAll('#deletepost');
+    console.log(clickDelete);
+    clickDelete.forEach(item => {item.addEventListener('click', () => deletePost (item.value))});
+    const openMenuEdit = document.querySelectorAll('#editPost');
+    console.log(openMenuEdit);
+    openMenuEdit.forEach(item => {item.addEventListener('click', function () {
+    if (showMenuEditcontrol === true){
+      item.childNodes[1].style.display='block';
+      showMenuEditcontrol = false;
+    }
+    else {
+      item.childNodes[1].style.display='none';
+      showMenuEditcontrol = true;
+    }
+    }
+    )});
+    
   })
   .catch(err => console.log(err));
   return userPosts;
-}
+};
+let showMenuEditcontrol = true;
 
-//edit profile
-const editarProfile = () => {
-  
+  /**/
 
+//edit and delete post
+
+const deletePost= (id) => {
+    firebase.firestore().collection("posts").doc(id).delete().then(() => {
+    console.log("Document successfully deleted! " + id);
+}).catch((error) => {
+  console.error("Error removing document: ", error);
 }
+)}
+
