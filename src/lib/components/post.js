@@ -1,4 +1,4 @@
-import { showPosts } from "../functions/postsData.js";
+import { showPosts, showUserPosts } from "../functions/postsData.js";
 
 export const commandBar = ()=>{
   let commandBar = document.createElement('div');

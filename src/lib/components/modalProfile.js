@@ -17,26 +17,28 @@ export const modalProfile =()=>{
   return editProfileTemplate;
 }
 
-//const storage = firebase.storage();
-export const openModal = () => {
-  let user = firebase.auth().currentUser;
+export const openModal = (docId) => {
   const rootContainer = document.getElementById('root');
   rootContainer.appendChild(modalProfile());
   const editProfileForm = document.getElementById('editProfileForm');
   editProfileForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log(user);
-    let nombre = document.getElementById('usernameChanged').value;
-    let file = document.getElementById ('profileImage').value;
-    console.log(file);
-    //let storageRef = storage.ref(/imgProfile/ + file.name);
-    user.updateProfile({ 
-    displayName: nombre,
-    //photoURL: storageRef
-  }).then(function() {
+    let database = firebase
+    .firestore()
+    .collection('userInfo')
+    .doc(docId);
+    database.update({
+      userBio : document.getElementById('bioChanged').value ,
+      userName: document.getElementById('usernameChanged').value,
+    })/*
+  .then(function() {
     console.log('datos actualizados');
   }).catch(function(error) {
     // An error happened.
-  });
-  });
+  });*/
+  }); 
+}
+
+const closeModal = () =>{
+
 }
