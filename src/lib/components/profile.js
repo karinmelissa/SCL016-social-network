@@ -1,5 +1,3 @@
-import { auth } from "../functions/auth.js";
-import { firestore } from "../functions/postsData.js";
 import { openModal } from "./modalProfile.js";
 
 export const profilePage =()=>{

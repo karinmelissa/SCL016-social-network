@@ -24,7 +24,7 @@ const fixtureData = {
     }
   }
 }
-global.firebase = new MockFirebase(fixtureData, { isNativeSnapshotListenerEnabled: true});
+
 
 
 describe ('agrega notas', () =>{
@@ -38,11 +38,17 @@ describe ('agrega notas', () =>{
 });*/
 
 import router from '../src/route.js';
-
 /*import {router} from '../src/route.js';*/
 
 describe('Pruebas de navegacion', () => {
+    /*beforeEach(() => {
+    global.firebase = jest.fn().mockResolvedValue({
+      auth: jest.fn().mockResolvedValue({}),
+    });
+  });*/
+
   it('Rutas protegidas por sesion', () => {
+
 
     router.userVerification = jest.fn();
     router.showTemplate = jest.fn();
