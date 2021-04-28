@@ -1,5 +1,4 @@
-
-  export const editPostModal = (id) => {
+export const editPostModal = (id) => {
   console.log('entra a la template' + id);
   const editpostTemplate = document.createElement('div');
   editpostTemplate.className = 'editPost';
@@ -26,7 +25,6 @@ export const editPost = (id) =>{
   .firestore()
   .collection('posts')
   .doc(id);
-
   database.get()
   .then( doc => { rootContainer.appendChild(editPostModal(doc.data()));
     const editPostForm = document.getElementById('editPostForm');
@@ -38,5 +36,4 @@ export const editPost = (id) =>{
       })
     })
   });
- 
 }
