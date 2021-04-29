@@ -1,11 +1,10 @@
 export const editPostModal = (id) => {
-  console.log('entra a la template' + id);
   const editpostTemplate = document.createElement('div');
   editpostTemplate.className = 'editPost';
-  editpostTemplate.id = 'editPost';
+  editpostTemplate.id = 'editPostModal';
   const editpost = `<div class="userPost">
+                     <i id='closeEditPost' class="far fa-times-circle"></i>
                         <form id="editPostForm" action="submit">
-                        <div class="profileImage"><img class="profileImage" src=" "></div>
                         <textarea class="writtePost" id="editPosttext">${id.text}</textarea>
                         <div class="commandPosting">
                         <select name="typePost" id="selectPrivacy">
@@ -13,7 +12,7 @@ export const editPostModal = (id) => {
                         <option value="private" label="Privada"></option>
                         </select> 
                         </div>
-                        <input type="submit" value="Submit" class="editProfileButton">
+                        <input type="submit" value="Editar" class="editProfileButton">
                         </form>
                     </div>`;
   editpostTemplate.innerHTML = editpost;
@@ -28,6 +27,9 @@ export const editPost = (id) =>{
   .doc(id);
   database.get()
   .then( doc => { rootContainer.appendChild(editPostModal(doc.data()));
+    const closeModalButton = document.getElementById('closeEditPost');
+    console.log(closeModalButton)
+    closeModalButton.addEventListener('click', ()=>closeModal());
     const editPostForm = document.getElementById('editPostForm');
     editPostForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -41,4 +43,8 @@ export const editPost = (id) =>{
       })
     })
   });
+}
+const closeModal = ()=>{
+  console.log('entra aca')
+  document.getElementById('editPostModal').style.display = 'none';
 }

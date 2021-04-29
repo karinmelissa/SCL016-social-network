@@ -11,6 +11,8 @@ export const savePost = () => {
         userName: firebase.auth().currentUser.displayName,
         text: createdPost,
         privacy: document.getElementById('selectPrivacy').value,
+        postLikes : [],
+        postDislikes :[],
         // Agregar imagenes, etiquetas
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       })
@@ -41,9 +43,9 @@ export const showUserPosts = () => {
   .then((querySnapShot) => {
     querySnapShot.forEach((doc) => {
       let arrayUserPosts = doc.data();
-      console.log(arrayUserPosts);
       console.log(currentUserInfo())
-      const userPostsTemplate = `<div class='post'>
+      const userPostsTemplate = `<div class='postContainer' value="${doc.id}">
+                                <div class='post'>
                                 <div class='postUserphoto'><img class='postUserphoto' src="${currentUserInfo()}"></div>
                                 <div class='postInfo'>
                                 <h2 class='postedUsername'>${arrayUserPosts.userName}
@@ -59,6 +61,12 @@ export const showUserPosts = () => {
                                   .toDate()
                                   .toDateString()}</p>
                                 <p class='postedText'>${arrayUserPosts.text}</p>
+                                </div>
+                                <div class="postButtons">
+                                <button id="like" class="likeButton"><i class="fas fa-heart"></i></button>
+                                <button id="dislike" class="dislikeButton"><i class="fas fa-frown"></i></button>
+                                <button id="comment" class="commentButton"><i class="far fa-comments"></i>Comentar</i></button>
+                                </div>
                                 </div>`;
     userPosts.innerHTML += userPostsTemplate;
   });  

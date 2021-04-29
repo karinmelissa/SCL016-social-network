@@ -14,7 +14,6 @@ export const feedBuilt =() =>{
   rootContainer.appendChild(feedContainer);
   feedContainer.appendChild(leftSideBar())
   feedContainer.appendChild(newpost());
-  //feedContainer.appendChild(showPosts());
   feedContainer.appendChild(commandBar());
   feedContainer.appendChild(post());
   feedContainer.appendChild(rightSideBar());
@@ -25,6 +24,7 @@ export const feedBuilt =() =>{
                
   const logoutButton = document.getElementById('logout-button');
   logoutButton.addEventListener('click', close);
+
 }
 
 const openMenuFunction = (e) => {
