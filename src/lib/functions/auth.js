@@ -22,11 +22,12 @@ export const signUpUser = () => {
           userEmail : email ,
           userName : name,
           userBio: 'Hola, mi nombre es ' + name,
-          profilePicture : "Upload profile picture"
+          profilePicture : "/images/DefaultProfile.png"
         })
         userCredential.user.updateProfile({
           displayName: name,
         });
+        window.location.href = '#/home'
       })
       .catch(() => {
         document.querySelector('.error-control').textContent = 'Correo electronico invalido';
@@ -64,7 +65,16 @@ export const signInGoogle = (e) => {
   e.preventDefault();
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then((result) => {
-    console.log(result);
+    console.log(result.user)
+    //Hay que poner un If si el usuario ya existe
+    firebase.firestore().collection('userInfo')
+        .add({
+          userId: result.user.uid,
+          userEmail : result.user.email ,
+          userName : result.user.displayName,
+          userBio: 'Hola, mi nombre es ' + result.user.displayName,
+          profilePicture : result.user.photoURL,
+        })
     window.location.href = '#/home';
   });
 };

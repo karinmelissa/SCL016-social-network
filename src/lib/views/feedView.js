@@ -4,7 +4,6 @@ import { newpost } from '../components/posting.js';
 import { topMenu } from '../components/topMenu.js';
 import { leftSideBar, rightSideBar } from '../components/userSideBar.js';
 import { close } from '../functions/auth.js';
-import { savePost } from '../functions/postsData.js';
 
 export const feedBuilt =() =>{
   const rootContainer = document.getElementById('root');
@@ -26,9 +25,6 @@ export const feedBuilt =() =>{
                
   const logoutButton = document.getElementById('logout-button');
   logoutButton.addEventListener('click', close);
-
-  const createPost = document.querySelector('.postingButton');
-  createPost.addEventListener('click', savePost); 
 }
 
 const openMenuFunction = (e) => {

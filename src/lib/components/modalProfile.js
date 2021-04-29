@@ -1,8 +1,11 @@
 export const modalProfile =()=>{
   const editProfileTemplate = document.createElement('div');
+  editProfileTemplate.style.display = 'none';
   editProfileTemplate.className = 'modalProfile';
+  editProfileTemplate.id = 'modalProfile';
   const editProfile = `<div class="profileModal">
                         <h2 class="profileEdit">Editar perfil</h2>
+                        <i id='closeEditProfile' class="far fa-times-circle"></i>
                         <form id="editProfileForm" action="submit">
                           <label for="img">Imagen: </label>
                           <input type="file" id="profileImage" name="img" accept="image/*">
@@ -18,8 +21,8 @@ export const modalProfile =()=>{
 }
 
 export const openModal = (docId) => {
-  const rootContainer = document.getElementById('root');
-  rootContainer.appendChild(modalProfile());
+  const profileModal = document.getElementById('modalProfile');
+  profileModal.style.display = 'block'
   const editProfileForm = document.getElementById('editProfileForm');
   editProfileForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -30,15 +33,15 @@ export const openModal = (docId) => {
     database.update({
       userBio : document.getElementById('bioChanged').value ,
       userName: document.getElementById('usernameChanged').value,
-    })/*
+    })
   .then(function() {
-    console.log('datos actualizados');
-  }).catch(function(error) {
-    // An error happened.
-  });*/
+    document.getElementById('modalProfile').style.display = 'none';
+    window.location.reload();
+  })
   }); 
+  document.getElementById('closeEditProfile').addEventListener('click',closeModal);
 }
 
 const closeModal = () =>{
-
+  document.getElementById('modalProfile').style.display = 'none';
 }

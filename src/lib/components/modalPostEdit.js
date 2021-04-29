@@ -2,6 +2,7 @@ export const editPostModal = (id) => {
   console.log('entra a la template' + id);
   const editpostTemplate = document.createElement('div');
   editpostTemplate.className = 'editPost';
+  editpostTemplate.id = 'editPost';
   const editpost = `<div class="userPost">
                         <form id="editPostForm" action="submit">
                         <div class="profileImage"><img class="profileImage" src=" "></div>
@@ -33,6 +34,10 @@ export const editPost = (id) =>{
       database.update({
       text : document.getElementById('editPosttext').value
       //userName: document.getElementById('usernameChanged').value,
+      })
+      .then(function() {
+        document.getElementById('editPost').style.display = 'none';
+        window.location.reload();
       })
     })
   });
