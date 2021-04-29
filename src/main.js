@@ -1,9 +1,8 @@
-// Este es el punto de entrada de tu aplicacion
+import services from '../route.js';
 
-import { myFunction } from './lib/index.js';
-import { loginForm } from './lib/userLogin.js';
+const init = () => {
+  services.userVerification();
+  services.initRouter();
+};
 
-//myFunction();
-//loginForm();
-document.getElementById('root').appendChild(myFunction());
-
+window.addEventListener('load', init);
