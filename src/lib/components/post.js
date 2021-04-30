@@ -1,4 +1,5 @@
 import { showPosts } from "../functions/postsData.js";
+import { likePost } from "../functions/postInteractions.js";
 
 export const commandBar = ()=>{
   let commandBar = document.createElement('div');
@@ -19,10 +20,19 @@ export const post = ()=>{
   posts.className='posts';
   data.onSnapshot(function (snapshot) {
     snapshot.docChanges().forEach(function (change) {
-      var post = change.doc.data();
-      const posting = `
+      let postId = change.doc.id;
+      let post = change.doc.data();
+      let userPhoto =  firebase
+      .firestore()
+      .collection('userInfo')
+      .where( "userId", "==", post.userId)
+      .get()
+      .then((e) => {
+      e.forEach((doc) => {
+        const posting = `
+                    <div class='postContainer' value="${postId}">
                     <div class='post'>
-                    <div class='postUserphoto'></div>
+                    <div class='postUserphoto'><img class='postUserphoto'src="${doc.data().profilePicture}"></div>
                     <div class='postInfo'>
                       <h2 class='postedUsername'>${post.userName}</h2>
                       <p class='postedTime'>${post.timestamp
@@ -30,9 +40,18 @@ export const post = ()=>{
                         .toDateString()}</p>
                     </div>
                     <p class='postedText'>${post.text}</p>
+                    </div>
+                    <div class="postButtons">
+                    <button id="like" class="likeButton" value="${postId}"><i id="fa-heart"class="fas fa-heart"></i></button>
+                    <button id="dislike" class="dislikeButton"><i class="fas fa-frown"></i></button>
+                    <button id="comment" class="commentButton"><i class="far fa-comments"></i>Comentar</i></button>
+                    </div>
                     </div>`;
-      // Faltan los botones de mg, :( y comentar, historia de usuario 4
       posts.innerHTML += posting;
+      });
+      const likeButton = document.querySelectorAll('#like');
+      likeButton.forEach(item => {item.addEventListener( 'click',()=>likePost(item.value))})
+    });
     });
   });
   return posts;

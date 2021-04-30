@@ -16,13 +16,11 @@ let userFound;
 const userVerification = () => {
   firebase.auth().onAuthStateChanged((user) => {
     user ? (userFound = true) : (userFound = false);
-    console.log(userFound); 
   });
   return userFound;
 };
 
 const rootContainer = document.getElementById('root');
-
 const showTemplate = (hash) => {
   rootContainer.innerHTML = '';
   switch (hash) {

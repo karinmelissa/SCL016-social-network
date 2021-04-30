@@ -11,6 +11,8 @@ export const savePost = () => {
         userName: firebase.auth().currentUser.displayName,
         text: createdPost,
         privacy: document.getElementById('selectPrivacy').value,
+        postLikes : [],
+        postDislikes :[],
         // Agregar imagenes, etiquetas
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       })
@@ -40,9 +42,11 @@ export const showUserPosts = () => {
   .get()
   .then((querySnapShot) => {
     querySnapShot.forEach((doc) => {
-      var arrayUserPosts = doc.data();
-     const userPostsTemplate = `<div class='post'>
-                                <div class='postUserphoto'></div>
+      let arrayUserPosts = doc.data();
+      console.log(currentUserInfo())
+      const userPostsTemplate = `<div class='postContainer' value="${doc.id}">
+                                <div class='post'>
+                                <div class='postUserphoto'><img class='postUserphoto' src="${currentUserInfo()}"></div>
                                 <div class='postInfo'>
                                 <h2 class='postedUsername'>${arrayUserPosts.userName}
                                 <i id ='editPost' class="fas fa-ellipsis-h">
@@ -57,39 +61,34 @@ export const showUserPosts = () => {
                                   .toDate()
                                   .toDateString()}</p>
                                 <p class='postedText'>${arrayUserPosts.text}</p>
+                                </div>
+                                <div class="postButtons">
+                                <button id="like" class="likeButton"><i class="fas fa-heart"></i></button>
+                                <button id="dislike" class="dislikeButton"><i class="fas fa-frown"></i></button>
+                                <button id="comment" class="commentButton"><i class="far fa-comments"></i>Comentar</i></button>
+                                </div>
                                 </div>`;
     userPosts.innerHTML += userPostsTemplate;
-    
   });  
     const clickEdit = document.querySelectorAll('#editpost');
-    console.log(clickEdit);
     clickEdit.forEach(item => {item.addEventListener('click', () => editPost (item.value))});
     const clickDelete = document.querySelectorAll('#deletepost');
-    console.log(clickDelete);
     clickDelete.forEach(item => {item.addEventListener('click', () => deletePost (item.value))});
     const openMenuEdit = document.querySelectorAll('#editPost');
-    console.log(openMenuEdit);
     openMenuEdit.forEach(item => {item.addEventListener('click', function () {
     if (showMenuEditcontrol === true){
       item.childNodes[1].style.display='block';
       showMenuEditcontrol = false;
-    }
-    else {
+    }else {
       item.childNodes[1].style.display='none';
       showMenuEditcontrol = true;
-    }
-    }
+    }}
     )});
-    
   })
   .catch(err => console.log(err));
   return userPosts;
 };
 let showMenuEditcontrol = true;
-
-  /**/
-
-//edit and delete post
 
 const deletePost= (id) => {
     firebase.firestore().collection("posts").doc(id).delete().then(() => {
@@ -97,5 +96,18 @@ const deletePost= (id) => {
 }).catch((error) => {
   console.error("Error removing document: ", error);
 }
-)}
+)};
 
+const currentUserInfo =()=>{
+  let database = firebase
+  .firestore()
+  .collection('userInfo');
+  const holi = database.where( "userId", "==", firebase.auth().currentUser.uid)
+  .get()
+  console.log(holi)
+  /*.then((e) => {
+    e.forEach((doc) => {
+    return doc.data();
+    })
+  })*/
+}
