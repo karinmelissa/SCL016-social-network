@@ -55,7 +55,7 @@ const changeRouter = (hash) => {
       case '#/home':
         return services.showTemplate(hash); 
       case '#/profile':
-        return services.showTemplate(hash); 
+        return services.showTemplate(hash);  
       default :
       window.location.hash = '#/home'  
     };
