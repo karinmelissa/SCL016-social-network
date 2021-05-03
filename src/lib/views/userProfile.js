@@ -1,4 +1,5 @@
 import { footer } from "../components/footer.js";
+import { editPostModal } from "../components/modalPostEdit.js";
 import { modalProfile } from "../components/modalProfile.js";
 import { commandBarProfile, profilePage } from "../components/profile.js";
 import { topMenu } from "../components/topMenu.js";
@@ -17,6 +18,7 @@ export const profileBuilt = () =>{
   
   rootContainer.appendChild(footer());
   rootContainer.appendChild(modalProfile());
+  //rootContainer.appendChild(editPostModal());
 
   const openMenu = document.getElementById('openMenu');
   openMenu.addEventListener('click', openMenuFunction);

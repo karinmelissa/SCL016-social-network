@@ -1,11 +1,9 @@
 export const editPostModal = (id) => {
-  console.log('entra a la template' + id);
   const editpostTemplate = document.createElement('div');
-  editpostTemplate.className = 'editPost';
-  editpostTemplate.id = 'editPost';
+  editpostTemplate.className = 'editPostModal';
+  editpostTemplate.id = 'editPostModal';
   const editpost = `<div class="userPost">
                         <form id="editPostForm" action="submit">
-                        <div class="profileImage"><img class="profileImage" src=" "></div>
                         <textarea class="writtePost" id="editPosttext">${id.text}</textarea>
                         <div class="commandPosting">
                         <select name="typePost" id="selectPrivacy">
@@ -13,7 +11,8 @@ export const editPostModal = (id) => {
                         <option value="private" label="Privada"></option>
                         </select> 
                         </div>
-                        <input type="submit" value="Submit" class="editProfileButton">
+                        <input type="submit" value="Editar" class="editProfileButton">
+                        <button class="editProfileButton" id="cancel">Cancelar</button>
                         </form>
                     </div>`;
   editpostTemplate.innerHTML = editpost;
@@ -33,12 +32,22 @@ export const editPost = (id) =>{
       e.preventDefault();
       database.update({
       text : document.getElementById('editPosttext').value
-      //userName: document.getElementById('usernameChanged').value,
       })
       .then(function() {
-        document.getElementById('editPost').style.display = 'none';
+        document.getElementById('editPostModal').style.display = 'none';
         window.location.reload();
       })
     })
+    const cancelEditForm= document.getElementById('cancel');
+    cancelEditForm.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('editPostModal').style.display = 'none';
+      window.location.reload('#/profile');
+    })
   });
+}
+
+const closeModal = ()=>{
+  console.log('entra aca')
+  document.getElementById('editPostModal').style.display = 'none';
 }
