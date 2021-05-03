@@ -29,7 +29,7 @@ export const openModal = (docId) => {
     let database = firebase
     .firestore()
     .collection('userInfo')
-    .doc(docId);
+    .doc(docId); 
     database.update({
       userBio : document.getElementById('bioChanged').value ,
       userName: document.getElementById('usernameChanged').value,

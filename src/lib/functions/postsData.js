@@ -51,7 +51,7 @@ export const showUserPosts = () => {
                                 <h2 class='postedUsername'>${arrayUserPosts.userName}
                                 <i id ='editPost' class="fas fa-ellipsis-h">
                                 <div id='menuEdit' class="menuEdit">
-                                    <button id = 'editpost' value='${doc.id}'>Editar</button></a>
+                                    <button id = 'editPostButton' value='${doc.id}'>Editar</button></a>
                                     <button id ='deletepost' value='${doc.id}'>Borrar</button>
                                  </div>
                                  </i>
@@ -70,7 +70,7 @@ export const showUserPosts = () => {
                                 </div>`;
     userPosts.innerHTML += userPostsTemplate;
   });  
-    const clickEdit = document.querySelectorAll('#editpost');
+    const clickEdit = document.querySelectorAll('#editPostButton');
     clickEdit.forEach(item => {item.addEventListener('click', () => editPost (item.value))});
     const clickDelete = document.querySelectorAll('#deletepost');
     clickDelete.forEach(item => {item.addEventListener('click', () => deletePost (item.value))});
@@ -90,13 +90,17 @@ export const showUserPosts = () => {
 };
 let showMenuEditcontrol = true;
 
-const deletePost= (id) => {
-    firebase.firestore().collection("posts").doc(id).delete().then(() => {
-    console.log("Document successfully deleted! " + id);
-}).catch((error) => {
-  console.error("Error removing document: ", error);
+const deletePost = (id) => {
+  console.log('entra a delete' + id);
+    if (confirm("Segura que quieres borrar este post!")) {
+      firebase.firestore().collection("posts").doc(id).delete().then(() => {
+        console.log("Document successfully deleted! " + id);
+    }).catch((error) => {
+      console.error("Error removing document: ", error);
+    })
+    windows.location.reload();
 }
-)};
+};
 
 const currentUserInfo =()=>{
   let database = firebase

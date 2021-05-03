@@ -11,12 +11,13 @@ import {
 import { feedBuilt } from './lib/views/feedView.js';
 import { profileBuilt } from './lib/views/userProfile.js';
  
-let userFound;
+let userFound = false;
 // verifica si el usuario esta registrado
 const userVerification = () => {
   firebase.auth().onAuthStateChanged((user) => {
     user ? (userFound = true) : (userFound = false);
   });
+  console.log(userFound);
   return userFound;
 };
 
@@ -49,7 +50,8 @@ const showTemplate = (hash) => {
 };
 
 const changeRouter = (hash) => {
-  let userFound = services.userVerification();
+  const userFound = services.userVerification();
+  console.log(userFound);
   if(userFound == true){
     switch(hash){
       case '#/home':
@@ -74,9 +76,11 @@ const changeRouter = (hash) => {
 
 const initRouter = () => {
   window.addEventListener('load', changeRouter(window.location.hash));
+  //services.userVerification();
   // reconoce un cambio en el hash y le pasa ese nuevo hash a changeRouter
   if ('onhashchange' in window) {
     window.onhashchange = () => {
+      //services.userVerification();
       changeRouter(window.location.hash);
     };
   }

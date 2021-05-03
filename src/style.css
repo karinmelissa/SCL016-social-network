@@ -672,7 +672,7 @@ form textarea{
   background-color: #797ad4;
   color: #ffffff;
 }
-.editPost{
+.editPostModal{
   position: absolute;
   top: 300px;
   left: 15%;
