@@ -65,7 +65,7 @@ export const showUserPosts = () => {
                                 <p class='postedText'>${arrayUserPosts.text}</p>
                                 </div>
                                 <div class="postButtons">
-                                <button id="like" class="likeButton"><i class="fas fa-heart"></i></button>
+                                <button id="like" class="likeButton">${arrayUserPosts.postLikes.length}<i class="fas fa-heart"></i></button>
                                 <button id="dislike" class="dislikeButton"><i class="fas fa-frown"></i></button>
                                 <button id="comment" class="commentButton"><i class="far fa-comments"></i>Comentar</i></button>
                                 </div>

@@ -5,6 +5,11 @@
   padding: 0%;
   font-family: "Poppins", sans-serif;
 }
+button, 
+a,
+i{
+  cursor: pointer;
+}
 h1 {
   font-weight: 500;
 }
@@ -21,7 +26,7 @@ h1 {
   background-color: #343a5a;
   background-image: url("images/background.png");
   background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: 100vw;
+  background-size: 100vw 100vh;
   background-position-y: 10%;
 }
 .welcomeLogo {
@@ -144,6 +149,7 @@ h1 {
   color: #ffffff;
   text-align: center;
   background-color: #343a5a;
+  margin-top: 10px;
 }
 
 .loginForm,
@@ -224,6 +230,7 @@ h1 {
   display: grid;
   grid-template-columns: 0.4fr 1fr 0.4fr;
   background-color: #c17f89;
+  margin-bottom: 10px;
 }
 
 .topMenu img {
@@ -472,9 +479,9 @@ h1 {
 
 .userProfile{
   grid-template-areas: userInformation;
-  width: 90%;
+  width: 100%;
   margin:auto;
-  margin-top: 20px;
+  margin-top: -11px;
 }
 
 .userInfoContainer {
@@ -489,7 +496,8 @@ h1 {
     "userName userName"
     "userBio userBio";
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr 1fr 0.5fr;
+  grid-template-rows: .5fr 1fr .5fr;
+  padding: 5px;
 }
 
 .profileImage {
@@ -617,17 +625,24 @@ h1 {
 .postButtons{
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: .3fr .3fr 2fr;
+  grid-template-columns: .4fr .4fr 2fr;
   width: 100%;
+}
+.editProfile{
+  background-color: white;
+  border-style: none;
+  color: #343a5a;
+  font-size: 18px;
 }
 .likeButton,
 .dislikeButton{
   background: #7EB3DD;
   border-style: none;
-  width: 30px;
-  height: 20px;
+  width: 35px;
+  height: 23px;
   margin-top: 0px;
   border-radius: 0 0 30px 30px;
+  color: white;
 }
 .commentButton{
   width: 100px;
@@ -744,10 +759,41 @@ form textarea{
   .leftBar {
     grid-template-areas: leftBar;
     display: flex;
-    border: solid 1px;
-    height: 400px;
+    height: fit-content;
     grid-column: 1/2;
     grid-row: 1/4;
+  }  
+  .userSideBar{
+    color: #343a5a;
+    margin: 0px auto;
+    border: 5px solid #C17F89;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+    grid-template-rows: .3fr 1fr;
+    padding : 10px 0px;
+    width: 95%;
+  }
+  .sidebarImage{
+    margin: auto;
+    background-color: #C17F89;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    grid-row: 1/2;
+  }
+  .sideBarUserName{
+    margin: auto 0px;
+  }
+  .sideBarUserName a{
+    text-decoration: none;
+  }
+
+  .sideBarUserBio{
+    grid-column: 1/3;
+    width: 85%;
+    margin: 0px auto;
   }
 
   .rightBar {
@@ -789,6 +835,7 @@ form textarea{
   .commandBarProfile{
     grid-column: 1/2;
     grid-row:2/3;
+    margin: 15px 5%;
   }
 
   .profileFeed{
@@ -801,5 +848,16 @@ form textarea{
     left: 15%;
     width: 70%;
     padding: 10px;
+  }
+  .postButtons {
+    grid-template-columns: .2fr .2fr 2fr;
+  }
+  .userInfoContainer {
+    margin: 10px auto;
+    border-radius: 10px;
+    width: 85%;
+  }
+  .editProfile {
+    margin: 0px 0px 0px 55%;
   }
 } /* end desktop view

@@ -18,12 +18,14 @@ export const post = ()=>{
   let data = showPosts();
   let posts = document.createElement('div');
   posts.className='posts';
-  data.get()
+  data
+  .get()
   .then((e) => {
     e.forEach( (doc)=> {
       let postId = doc.id;
       let post = doc.data();
-      let userPhoto =  firebase
+      console.log(post)
+      firebase
       .firestore()
       .collection('userInfo')
       .where( "userId", "==", post.userId)
@@ -35,7 +37,7 @@ export const post = ()=>{
                     <div class='post'>
                     <div class='postUserphoto'><img class='postUserphoto'src="${doc.data().profilePicture}"></div>
                     <div class='postInfo'>
-                      <h2 class='postedUsername'>${post.userName}</h2>
+                      <h2 class='postedUsername'>${doc.data().userName}</h2>
                       <p class='postedTime'>${post.timestamp
                         .toDate()
                         .toDateString()}</p>
@@ -52,7 +54,6 @@ export const post = ()=>{
       });
       const likeButton = document.querySelectorAll('#like');
       likeButton.forEach(item => {item.addEventListener( 'click',()=>likePost(item.value,item))})
-      //const heartLike = document.querySelectorAll('#fa-heart');
       likeButton.forEach(item => {item.addEventListener('onload',showLikes(item.value,item))})
     });
     });
