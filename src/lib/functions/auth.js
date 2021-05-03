@@ -65,9 +65,27 @@ export const signInGoogle = (e) => {
   e.preventDefault();
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then((result) => {
-    console.log(result.user)
-    //Hay que poner un If si el usuario ya existe
-    firebase.firestore().collection('userInfo')
+     //if the user already exist we sign in and redirect to the home page
+    let userFound = false
+    let user = firebase.firestore().collection('userInfo').where( "userId", "==", result.user.uid);
+    user.get().then((e) => {
+      e.forEach(doc => {
+        if(doc.exists){
+          userFound = true
+          console.log('usuario ya creado')
+          window.location.href = '#/home'
+          return userFound;
+        }
+        else{
+          userFound = false;
+          return userFound
+        }
+      });
+      //a new user its created to our userInfo database
+      if(userFound == false){
+        console.log(userFound)
+        console.log('se crea nuevo usuario')
+        firebase.firestore().collection('userInfo')
         .add({
           userId: result.user.uid,
           userEmail : result.user.email ,
@@ -75,6 +93,8 @@ export const signInGoogle = (e) => {
           userBio: 'Hola, mi nombre es ' + result.user.displayName,
           profilePicture : result.user.photoURL,
         })
-    window.location.href = '#/home';
-  });
+        window.location.href = '#/home';
+      }
+    })
+    })
 };
