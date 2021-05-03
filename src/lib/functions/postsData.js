@@ -43,10 +43,9 @@ export const showUserPosts = () => {
   .then((querySnapShot) => {
     querySnapShot.forEach((doc) => {
       let arrayUserPosts = doc.data();
-      console.log(currentUserInfo())
       const userPostsTemplate = `<div class='postContainer' value="${doc.id}">
                                 <div class='post'>
-                                <div class='postUserphoto'><img class='postUserphoto' src="${currentUserInfo()}"></div>
+                                <div class='postUserphoto'><img class='postUserphoto' src="${firebase.auth().photoUrl}"></div>
                                 <div class='postInfo'>
                                 <h2 class='postedUsername'>${arrayUserPosts.userName}
                                 <i id ='editPost' class="fas fa-ellipsis-h">
@@ -97,17 +96,3 @@ const deletePost= (id) => {
   console.error("Error removing document: ", error);
 }
 )};
-
-const currentUserInfo =()=>{
-  let database = firebase
-  .firestore()
-  .collection('userInfo');
-  const holi = database.where( "userId", "==", firebase.auth().currentUser.uid)
-  .get()
-  console.log(holi)
-  /*.then((e) => {
-    e.forEach((doc) => {
-    return doc.data();
-    })
-  })*/
-}
