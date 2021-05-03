@@ -11,14 +11,17 @@ import {
 import { feedBuilt } from './lib/views/feedView.js';
 import { profileBuilt } from './lib/views/userProfile.js';
  
-let userFound;
+
 // verifica si el usuario esta registrado
-const userVerification = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    user ? (userFound = true) : (userFound = false);
-  });
-  return userFound;
-};
+//let userFound;
+// verifica si el usuario esta registrado
+//const userVerification = () => {
+  //firebase.auth().onAuthStateChanged((user) => {
+    //console.log(user);
+    //user ? (userFound = true) : (userFound = false);
+  //});
+  //return userFound;
+//};
 
 const rootContainer = document.getElementById('root');
 const showTemplate = (hash) => {
@@ -49,9 +52,9 @@ const showTemplate = (hash) => {
 };
 
 const changeRouter = (hash) => {
-  let userFound = services.userVerification();
-  if(userFound == true){
-    switch(hash){
+  firebase.auth().onAuthStateChanged((user) => {
+  if (user){
+     switch(hash){
       case '#/home':
         return services.showTemplate(hash); 
       case '#/profile':
@@ -70,7 +73,8 @@ const changeRouter = (hash) => {
     default :
     window.location.hash = '';
   }
-};
+});
+}
 
 const initRouter = () => {
   window.addEventListener('load', changeRouter(window.location.hash));
@@ -84,7 +88,7 @@ const initRouter = () => {
 
 const services = {
   showTemplate,
-  userVerification,
+  //userVerification,
   initRouter,
   changeRouter,  
 };

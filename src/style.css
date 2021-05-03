@@ -673,7 +673,7 @@ form textarea{
   background-color: #797ad4;
   color: #ffffff;
 }
-.editPost{
+.editPostModal{
   position: absolute;
   top: 300px;
   left: 15%;
@@ -694,6 +694,7 @@ form textarea{
   grid-row: 1/2;
   margin: 5px;
 }
+
 
 /*desktop view*/
 @media only screen and (min-width: 769px) {
