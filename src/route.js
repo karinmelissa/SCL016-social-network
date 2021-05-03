@@ -11,15 +11,17 @@ import {
 import { feedBuilt } from './lib/views/feedView.js';
 import { profileBuilt } from './lib/views/userProfile.js';
  
-let userFound = false;
+
 // verifica si el usuario esta registrado
-const userVerification = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    user ? (userFound = true) : (userFound = false);
-  });
-  console.log(userFound);
-  return userFound;
-};
+//let userFound;
+// verifica si el usuario esta registrado
+//const userVerification = () => {
+  //firebase.auth().onAuthStateChanged((user) => {
+    //console.log(user);
+    //user ? (userFound = true) : (userFound = false);
+  //});
+  //return userFound;
+//};
 
 const rootContainer = document.getElementById('root');
 const showTemplate = (hash) => {
@@ -50,14 +52,13 @@ const showTemplate = (hash) => {
 };
 
 const changeRouter = (hash) => {
-  const userFound = services.userVerification();
-  console.log(userFound);
-  if(userFound == true){
-    switch(hash){
+  firebase.auth().onAuthStateChanged((user) => {
+  if (user){
+     switch(hash){
       case '#/home':
         return services.showTemplate(hash); 
       case '#/profile':
-        return services.showTemplate(hash); 
+        return services.showTemplate(hash);  
       default :
       window.location.hash = '#/home'  
     };
@@ -72,15 +73,14 @@ const changeRouter = (hash) => {
     default :
     window.location.hash = '';
   }
-};
+});
+}
 
 const initRouter = () => {
   window.addEventListener('load', changeRouter(window.location.hash));
-  //services.userVerification();
   // reconoce un cambio en el hash y le pasa ese nuevo hash a changeRouter
   if ('onhashchange' in window) {
     window.onhashchange = () => {
-      //services.userVerification();
       changeRouter(window.location.hash);
     };
   }
@@ -88,7 +88,7 @@ const initRouter = () => {
 
 const services = {
   showTemplate,
-  userVerification,
+  //userVerification,
   initRouter,
   changeRouter,  
 };

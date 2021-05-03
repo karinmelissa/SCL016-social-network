@@ -1,5 +1,5 @@
 import { showPosts } from "../functions/postsData.js";
-import { likePost } from "../functions/postInteractions.js";
+import { likePost , showLikes} from "../functions/postInteractions.js";
 
 export const commandBar = ()=>{
   let commandBar = document.createElement('div');
@@ -44,13 +44,15 @@ export const post = ()=>{
                     <div class="postButtons">
                     <button id="like" class="likeButton" value="${postId}"><i id="fa-heart"class="fas fa-heart"></i></button>
                     <button id="dislike" class="dislikeButton"><i class="fas fa-frown"></i></button>
-                    <button id="comment" class="commentButton"><i class="far fa-comments"></i>Comentar</i></button>
+                    <button id="comment" class="commentButton" value="${postId}"><i class="far fa-comments"></i>Comentar</i></button>
                     </div>
                     </div>`;
       posts.innerHTML += posting;
       });
       const likeButton = document.querySelectorAll('#like');
-      likeButton.forEach(item => {item.addEventListener( 'click',()=>likePost(item.value))})
+      likeButton.forEach(item => {item.addEventListener( 'click',()=>likePost(item.value,item))})
+      //const heartLike = document.querySelectorAll('#fa-heart');
+      likeButton.forEach(item => {item.addEventListener('onload',showLikes(item.value,item))})
     });
     });
   });
