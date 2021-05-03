@@ -3,7 +3,6 @@ export const editPostModal = (id) => {
   editpostTemplate.className = 'editPostModal';
   editpostTemplate.id = 'editPostModal';
   const editpost = `<div class="userPost">
-                      <i id='closeEditPost' class="far fa-times-circle"></i>
                         <form id="editPostForm" action="submit">
                         <textarea class="writtePost" id="editPosttext">${id.text}</textarea>
                         <div class="commandPosting">

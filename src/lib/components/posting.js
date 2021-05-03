@@ -23,7 +23,8 @@ export const newpost = () => {
     newpostTemplate.innerHTML = createpost;
     })
     const createPost = document.getElementById('postingButton');
-    createPost.addEventListener('click', savePost); 
+    createPost.addEventListener('click', savePost);
+    //createPost.addEventListener('click', () => window.location.reload()); 
   })
   return newpostTemplate;
 };

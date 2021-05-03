@@ -16,11 +16,13 @@ export const savePost = () => {
         // Agregar imagenes, etiquetas
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       })
+      .then(()=>{
+        window.location.reload();
+      })
       .catch(function (error) {
         console.error('Error writing new message to database', error);
       });
   }
-
 };
 
 export const showPosts = () => {
@@ -46,7 +48,7 @@ export const showUserPosts = () => {
       let arrayUserPosts = doc.data();
       const userPostsTemplate = `<div class='postContainer' value="${doc.id}">
                                 <div class='post'>
-                                <div class='postUserphoto'><img class='postUserphoto' src="${firebase.auth().photoUrl}"></div>
+                                <div class='postUserphoto'></div>
                                 <div class='postInfo'>
                                 <h2 class='postedUsername'>${arrayUserPosts.userName}
                                 <i id ='editPost' class="fas fa-ellipsis-h">
@@ -95,6 +97,7 @@ const deletePost = (id) => {
     if (confirm("Segura que quieres borrar este post!")) {
       firebase.firestore().collection("posts").doc(id).delete().then(() => {
         console.log("Document successfully deleted! " + id);
+        window.location.reload()
     }).catch((error) => {
       console.error("Error removing document: ", error);
     })

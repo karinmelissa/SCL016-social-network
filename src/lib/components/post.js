@@ -18,10 +18,11 @@ export const post = ()=>{
   let data = showPosts();
   let posts = document.createElement('div');
   posts.className='posts';
-  data.onSnapshot(function (snapshot) {
-    snapshot.docChanges().forEach(function (change) {
-      let postId = change.doc.id;
-      let post = change.doc.data();
+  data.get()
+  .then((e) => {
+    e.forEach( (doc)=> {
+      let postId = doc.id;
+      let post = doc.data();
       let userPhoto =  firebase
       .firestore()
       .collection('userInfo')

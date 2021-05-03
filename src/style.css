@@ -695,6 +695,7 @@ form textarea{
   margin: 5px;
 }
 
+
 /*desktop view*/
 @media only screen and (min-width: 769px) {
   .mainGrid {
