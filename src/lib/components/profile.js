@@ -1,48 +1,41 @@
-import { openModal } from "./modalProfile.js";
+import { openModal } from './modalProfile.js';
 
-export const profilePage =()=>{
+export const profilePage = () => {
   const profileTemplate = document.createElement('div');
   profileTemplate.className = 'userProfile';
-  let database = firebase
-  .firestore()
-  .collection('userInfo')
-  database.where( "userId", "==", firebase.auth().currentUser.uid)
-  .get()
-  .then((e) => {
-    e.forEach((doc) => {
-      let userInfo = doc.data();
-      const profile = `<div class="userInfoContainer">
-        <div class="profileImage"><a><img id = "userImage" class="profileImage" src="${userInfo.profilePicture}"></a></div>
-        <h2 class="userName">${userInfo.userName} <button id='editProfileButton' class='editProfile'><i id='editProfileButton' class="far fa-edit"></i></button> </h2>
-        <p class="userBio">${userInfo.userBio}</p>
-        <div class="userLinks">
-          <a class="userFriends">Amigas(13) </a>
-          <a class="userRooms">Mis Salas(4)</a>
+  const database = firebase.firestore().collection('userInfo');
+  database
+    .where('userId', '==', firebase.auth().currentUser.uid)
+    .get()
+    .then((e) => {
+      e.forEach((doc) => {
+        const userInfo = doc.data();
+        const profile = `<div class='userInfoContainer'>
+        <div class='profileImage'><a><img id = 'userImage' class='profileImage' src='${userInfo.profilePicture}'></a></div>
+        <h2 class='userName'>${userInfo.userName} <button id='editProfileButton' class='editProfile'><i id='editProfileButton' class='far fa-edit'></i></button> </h2>
+        <p class='userBio'>${userInfo.userBio}</p>
+        <div class='userLinks'>
+          <a class='userFriends'>Amigas(13) </a>
+          <a class='userRooms'>Mis Salas(4)</a>
         </div>
     </div>`;
-    profileTemplate.innerHTML = profile;
-    const showModal = document.getElementById('editProfileButton');
-    showModal.addEventListener('click',()=>openModal(doc.id));
+        profileTemplate.innerHTML = profile;
+        const showModal = document.getElementById('editProfileButton');
+        showModal.addEventListener('click', () => openModal(doc.id));
+      });
     });
-  });
   return profileTemplate;
-}
-  
+};
 
-export const commandBarProfile = ()=>{
-  let commandBarProfile = document.createElement('div');
-  commandBarProfile.className = 'commandBarProfile'
-  commandBarProfile.innerHTML = `
-                      <p id="commandText"> Publicaciones</p>
-                      <select name="typePost">
-                      <option value="Todas" label="Todas"></option>
-                      <option value="publicas" label="Publicas"></option>
-                      <option value="privadas" label="Privadas"></option>
+export const commandBarProfile = () => {
+  const commandBarProfile1 = document.createElement('div');
+  commandBarProfile1.className = 'commandBarProfile';
+  commandBarProfile1.innerHTML = `
+                      <p id='commandText'> Publicaciones</p>
+                      <select name='typePost'>
+                      <option value='Todas' label='Todas'></option>
+                      <option value='publicas' label='Publicas'></option>
+                      <option value='privadas' label='Privadas'></option>
                       </select>`;
-  return commandBarProfile;
-}
-
-/*export const uploadProfileImg = () => {
-  let imageFile = document.getElementById('uploadImage')
-  console.log(imageFile);
-}*/
+  return commandBarProfile1;
+};
