@@ -1,7 +1,6 @@
-import services from '../route.js';
+import services from './route.js';
 
 const init = () => {
-  //services.userVerification();
   services.initRouter();
 };
 

@@ -3,82 +3,73 @@ import {
   userRegister,
   homePage,
 } from './lib/components/homePage.js';
-import {
-  signInUser,
-  signUpUser,
-  signInGoogle,
-} from './lib/functions/auth.js';
+import { signInUser, signUpUser, signInGoogle } from './lib/functions/auth.js';
 import { feedBuilt } from './lib/views/feedView.js';
 import { profileBuilt } from './lib/views/userProfile.js';
- 
 
-// verifica si el usuario esta registrado
-//let userFound;
-// verifica si el usuario esta registrado
-//const userVerification = () => {
-  //firebase.auth().onAuthStateChanged((user) => {
-    //console.log(user);
-    //user ? (userFound = true) : (userFound = false);
-  //});
-  //return userFound;
-//};
-
+// show the interface for each hash
 const rootContainer = document.getElementById('root');
 const showTemplate = (hash) => {
   rootContainer.innerHTML = '';
   switch (hash) {
-    case '':
+    case '': {
       rootContainer.innerHTML = homePage();
       break;
-    case '#/login':
+    }
+    case '#/login': {
       rootContainer.innerHTML = userLogin();
       signInUser();
       const googlebutton = document.getElementById('loginWithGoogle');
       googlebutton.addEventListener('click', signInGoogle);
       break;
-    case '#/register':
+    }
+    case '#/register': {
       rootContainer.innerHTML = userRegister();
       signUpUser();
       const googleSignUp = document.getElementById('loginWithGoogle');
       googleSignUp.addEventListener('click', signInGoogle);
       break;
-    case '#/home':
+    }
+    case '#/home': {
       feedBuilt();
       break;
-    case '#/profile':
+    }
+    case '#/profile': {
       profileBuilt();
       break;
+    }
   }
 };
 
+// identifies if the user is login and show the correct page
 const changeRouter = (hash) => {
   firebase.auth().onAuthStateChanged((user) => {
-  if (user){
-     switch(hash){
-      case '#/home':
-        return services.showTemplate(hash); 
-      case '#/profile':
-        return services.showTemplate(hash);  
-      default :
-      window.location.hash = '#/home'  
-    };
-  }
-  switch(hash){
-    case '':
-      return services.showTemplate(hash);
-    case '#/login':
-      return services.showTemplate(hash);
-    case '#/register':
-      return services.showTemplate(hash);   
-    default :
-    window.location.hash = '';
-  }
-});
-}
+    if (user) {
+      switch (hash) {
+        case '#/home':
+          return services.showTemplate(hash);
+        case '#/profile':
+          return services.showTemplate(hash);
+        default:
+          window.location.hash = '#/home';
+      }
+    }
+    switch (hash) {
+      case '':
+        return services.showTemplate(hash);
+      case '#/login':
+        return services.showTemplate(hash);
+      case '#/register':
+        return services.showTemplate(hash);
+      default:
+        window.location.hash = '';
+    }
+  });
+};
 
+// recognizes a change in the hash and passes the new hash to changerouter
 const initRouter = () => {
   window.addEventListener('load', changeRouter(window.location.hash));
-  // reconoce un cambio en el hash y le pasa ese nuevo hash a changeRouter
   if ('onhashchange' in window) {
     window.onhashchange = () => {
       changeRouter(window.location.hash);
@@ -88,9 +79,8 @@ const initRouter = () => {
 
 const services = {
   showTemplate,
-  //userVerification,
   initRouter,
-  changeRouter,  
+  changeRouter,
 };
 
 export default services;
